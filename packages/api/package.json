@@ -1,0 +1,10 @@
+{
+  "name": "@codeit/api",
+  "version": "0.0.0",
+  "description": "CodeIt API",
+  "main": "index.js",
+  "scripts": {
+  },
+  "keywords": [],
+  "license": "MIT"
+}
