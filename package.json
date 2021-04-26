@@ -1,0 +1,27 @@
+{
+  "name": "codeit",
+  "private": true,
+  "version": "0.0.0",
+  "description": "An interactive coding playground",
+  "scripts": {
+    "lint": "lerna run lint --stream --concurrency=1",
+    "spell": "cspell ./packages/**/*.{ts,tsx}",
+    "prepare": "husky install config/husky"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fullstacksjs/codeit.git"
+  },
+  "contributors": [],
+  "license": "MIT",
+  "devDependencies": {
+    "@fullstacksjs/eslint-config": "6.0.0",
+    "cspell": "5.3.12",
+    "eslint": "7.25.0",
+    "husky": "6.0.0",
+    "lerna": "4.0.0",
+    "lint-staged": "10.5.4",
+    "prettier": "2.2.1",
+    "typescript": "4.2.4"
+  }
+}
