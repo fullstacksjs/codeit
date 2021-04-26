@@ -1,0 +1,12 @@
+{
+  "name": "@codeit/core",
+  "version": "0.0.0",
+  "description": "Codeit core package",
+  "main": "index.js",
+  "scripts": {
+  },
+  "keywords": [],
+  "dependencies": {
+  },
+  "license": "MIT"
+}
