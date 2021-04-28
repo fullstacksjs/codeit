@@ -5,6 +5,7 @@ import { PuzzleMode } from './PuzzleMode';
 import { TestCase } from './TestCase';
 import { Title } from './Title';
 
+// TODO: change id types to UUID
 export const Puzzle = t.type({
   id: tt.NonEmptyString,
   title: Title,
