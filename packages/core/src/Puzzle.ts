@@ -1,13 +1,13 @@
 import * as t from 'io-ts';
 import * as tt from 'io-ts-types';
 
+import { Id } from './Id';
 import { PuzzleMode } from './PuzzleMode';
 import { TestCase } from './TestCase';
 import { Title } from './Title';
 
-// TODO: change id types to UUID
 export const Puzzle = t.type({
-  id: tt.NonEmptyString,
+  id: Id,
   title: Title,
   mode: PuzzleMode,
   statement: tt.NonEmptyString,

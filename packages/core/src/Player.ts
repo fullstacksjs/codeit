@@ -1,11 +1,11 @@
 import * as t from 'io-ts';
 import * as tt from 'io-ts-types';
 
+import { Id } from './Id';
 import { Username } from './Username';
 
-// TODO: change id types to UUID
 export const Player = t.type({
-  id: tt.NonEmptyString,
+  id: Id,
   username: Username,
   displayName: tt.NonEmptyString,
 });

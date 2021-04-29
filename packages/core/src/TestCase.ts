@@ -1,11 +1,11 @@
 import * as t from 'io-ts';
-import * as tt from 'io-ts-types';
 
+import { Id } from './Id';
 import { TestCaseMode } from './TestCaseMode';
 import { Title } from './Title';
 
 export const TestCase = t.type({
-  id: tt.NonEmptyString,
+  id: Id,
   title: Title,
   input: t.string,
   assertion: t.string,

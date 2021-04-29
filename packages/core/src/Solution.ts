@@ -1,9 +1,10 @@
 import * as t from 'io-ts';
 import * as tt from 'io-ts-types';
 
-// TODO: change id types to UUID
+import { Id } from './Id';
+
 export const Solution = t.type({
-  playerId: tt.NonEmptyString,
-  puzzleId: tt.NonEmptyString,
+  playerId: Id,
+  puzzleId: Id,
   code: tt.NonEmptyString,
 });
