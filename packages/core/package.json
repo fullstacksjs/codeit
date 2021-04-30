@@ -3,10 +3,12 @@
   "version": "0.0.0",
   "description": "Codeit core package",
   "main": "index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "keywords": [],
   "dependencies": {
+    "fp-ts": "^2.10.4",
+    "io-ts": "^2.2.16",
+    "io-ts-types": "^0.5.16"
   },
   "license": "MIT"
 }
