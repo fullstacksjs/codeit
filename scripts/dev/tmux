@@ -1,0 +1,28 @@
+#!/bin/bash
+
+type tmux >/dev/null 2>&1 || {
+  echo "Sorry, but this script needs tmux"
+  exit 1
+}
+
+
+SESSION_NAME="codeit"
+COMPOSE="docker-compose -f ./docker-compose.base.yml -f ./docker-compose.dev.yml"
+scripts=("$COMPOE up api")
+
+tmux has-session -t $SESSION_NAME &>/dev/null
+if [ $? != 0 ]; then
+  for script in "${scripts[@]}"; do
+    if [ -z $INITED ]; then
+      tmux new-session -s $SESSION_NAME -n $SESSION_NAME -d
+      INITED=1
+    else
+      tmux split-window -t $SESSION_NAME:0 -h -p 33
+    fi
+    tmux send-keys -t $SESSION_NAME:0 "$script" C-m
+  done
+
+  tmux select-layout even-horizontal
+fi
+
+tmux attach-session -t $SESSION_NAME:0
