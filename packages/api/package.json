@@ -2,9 +2,20 @@
   "name": "@codeit/api",
   "version": "0.0.0",
   "description": "CodeIt API",
-  "main": "index.js",
   "scripts": {
+    "predev": "npm run prisma:generate",
+    "dev": "ts-node-dev --respawn --transpile-only --exit-child ./src",
+    "prisma:migrate:dev": "prisma migrate dev",
+    "prisma:generate": "prisma generate"
   },
-  "keywords": [],
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@prisma/client": "2.21.2"
+  },
+  "devDependencies": {
+    "prisma": "2.21.2",
+    "ts-node": "9.1.1",
+    "ts-node-dev": "1.1.6",
+    "typescript": "4.2.4"
+  }
 }

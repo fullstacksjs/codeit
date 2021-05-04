@@ -1,0 +1,5 @@
+#!/bin/sh
+
+./scripts/dev/down
+./scripts/dev/up -d
+[ -x "$(command -v tmux)" ] && ./scripts/dev/tmux

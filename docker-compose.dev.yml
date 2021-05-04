@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: config/docker/api/Dockerfile.dev
+    volumes:
+      - ./packages/core/src:/app/packages/core/src
+      - ./packages/api/src:/app/packages/api/src
+      - ./packages/api/prisma:/app/packages/api/prisma
+      - api_nm:/app/packages/api/node_modules
+      - api_root_nm:/app/node_modules
+      - api_core_nm:/app/packages/core/node_modules
+    tty: true
+    environment:
+      NODE_ENV: development
+
+volumes:
+  api_nm:
+  api_root_nm:
+  api_core_nm:

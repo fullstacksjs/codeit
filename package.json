@@ -12,7 +12,13 @@
     "type": "git",
     "url": "git+https://github.com/fullstacksjs/codeit.git"
   },
-  "contributors": [],
+  "contributors": [
+    {
+      "name": "Alireza Safaeirad",
+      "email": "alireza.safaeirad@gmail.com",
+      "url": "https://github.com/frontendmonster/"
+    }
+  ],
   "license": "MIT",
   "devDependencies": {
     "@fullstacksjs/eslint-config": "6.0.0",

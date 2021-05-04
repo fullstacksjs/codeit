@@ -1,0 +1,4 @@
+#!/bin/sh
+set -e
+
+docker-compose -f ./docker-compose.dev.yml -f ./docker-compose.base.yml "$@"
