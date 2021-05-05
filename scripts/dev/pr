@@ -1,0 +1,31 @@
+#!/bin/bash
+
+CYAN='\033[1;36m'
+RESET='\033[0m'
+WARN='\033[0;33m'
+
+type gh1 >/dev/null 2>&1 || {
+  echo -e "${WARN}Sorry, this script needs github-cli.${RESET}"
+  exit 1
+}
+
+BASE=${1:-"dev"}
+BRANCH_NAME=$(git branch --show-current)
+TYPE=${BRANCH_NAME%%/*}
+TITLE=$(echo ${BRANCH_NAME#*/*-*-} | sed -r "s/\-/\ /g")
+
+case $TYPE in
+feature) TYPE='feat' ;;
+esac
+
+PR_TITLE="$TYPE: $TITLE"
+echo -e "Creating PR:"
+echo -e "title:\t${CYAN}$PR_TITLE${RESET}"
+echo -e "base:\t${CYAN}$BASE${RESET}"
+echo -en "Continue? [y/N] "
+read -rn1 -p "" confirm
+echo
+
+[[ ! $confirm =~ ^([yY])$ ]] && exit 1
+
+gh pr create --base "$BASE" --title "$PR_TITLE" --body ""
