@@ -28,10 +28,24 @@
 
 - name: copy nginx config
   template:
-    src: ../template/nginx.con
+    src: ../templates/nginx.conf
     dest: /etc/nginx/sites-available/fullstacksjs-api
 
 - name: enable site
   shell: |
-    ln -sf /ect/nginx/sites-available/fullstacksjs-api /etc/nginx/sites-enabled/fullstacksjs-api
+    ln -sf /etc/nginx/sites-available/fullstacksjs-api /etc/nginx/sites-enabled/fullstacksjs-api
     nginx -s reload
+
+- name: create base-ci dir
+  file:
+    path: /root/base-runner
+    state: directory
+
+- name: run and download github actions runner
+  get_url:
+    url: https://github.com/actions/runner/releases/download/v2.278.0/actions-runner-linux-x64-2.278.0.tar.gz
+    dest: /root/base-runner
+
+- name: extract files from github runner tar file to a dir
+  shell: |
+    tar xzf /root/base-runner/actions-runner-linux-x64-2.278.0.tar.gz --directory /root/base-runner

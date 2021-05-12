@@ -1,0 +1,7 @@
+- hosts: fsk
+
+  become: true
+  roles:
+    - ../roles/prepare
+  vars_files:
+    - ../vars.yml
