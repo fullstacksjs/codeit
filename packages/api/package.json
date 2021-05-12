@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "description": "CodeIt API",
   "scripts": {
+    "build": "tsc",
     "predev": "npm run prisma:generate",
     "dev": "ts-node-dev --respawn --transpile-only --exit-child ./src",
     "prisma:migrate:dev": "prisma migrate dev",

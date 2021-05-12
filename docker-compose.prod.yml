@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: config/docker/api/Dockerfile.prod
+    environment:
+      NODE_ENV: production
+
