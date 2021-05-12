@@ -1,0 +1,19 @@
+FROM node:14.16-slim
+
+WORKDIR /app/
+
+COPY .npmrc .prettierignore .prettierrc.js lerna.json package.json package-lock.json tsconfig.react.json tsconfig.base.json ./
+COPY packages/core/package.json packages/core/
+COPY packages/api/package.json packages/api/
+
+RUN npm install -g lerna
+RUN lerna bootstrap
+RUN npm install
+
+COPY packages/core/ packages/core/
+COPY packages/api/ packages/api/
+
+WORKDIR /app/packages/api
+
+RUN npm run build
+CMD ["node", "src/index.js"]

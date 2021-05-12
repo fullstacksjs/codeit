@@ -4,7 +4,7 @@ CYAN='\033[1;36m'
 RESET='\033[0m'
 WARN='\033[0;33m'
 
-type gh1 >/dev/null 2>&1 || {
+type gh >/dev/null 2>&1 || {
   echo -e "${WARN}Sorry, this script needs github-cli.${RESET}"
   exit 1
 }

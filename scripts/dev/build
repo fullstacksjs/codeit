@@ -2,4 +2,6 @@
 set -e
 
 docker build --tag=codeit/dev:latest -f config/docker/base/Dockerfile.dev .
+npm i
+npx lerna bootstrap
 docker-compose -f ./docker-compose.dev.yml -f ./docker-compose.base.yml build "$@"

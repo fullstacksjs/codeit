@@ -1,0 +1,14 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ dev ]
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v2
+      - name: build-docker
+        run:  touch mmd.txt
+      - name: sample job
+        run : echo time

@@ -1,0 +1,37 @@
+---
+- name: installed dependencies
+  apt:
+    pkg:
+      - docker.io
+      - nginx
+      - git
+      - curl
+      - python3
+      - python3-pip
+    state: latest
+
+- name: install docker compose
+  pip:
+    name: docker-compose
+
+- name: enable docker service
+  service:
+    name: docker
+    state: started
+    enabled: yes
+
+- name: enable nginx service
+  service:
+    name: nginx
+    state: started
+    enabled: yes
+
+- name: copy nginx config
+  template:
+    src: ../template/nginx.con
+    dest: /etc/nginx/sites-available/fullstacksjs-api
+
+- name: enable site
+  shell: |
+    ln -sf /ect/nginx/sites-available/fullstacksjs-api /etc/nginx/sites-enabled/fullstacksjs-api
+    nginx -s reload
