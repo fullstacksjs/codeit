@@ -1,8 +1,7 @@
-import http from 'http';
+import { ApiServer } from './ApiServer';
+import { getConfig } from './config/getConfig';
 
-import { getEnv } from './getEnv';
+const config = getConfig();
+const apiServer = ApiServer(config);
 
-const env = getEnv();
-const server = http.createServer((req, res) => res.end("It's working"));
-
-server.listen(env.port, () => console.log(`Listening on port ${env.port}`));
+apiServer.listen(config.port, () => console.log(`Listening on port ${config.port}`));
