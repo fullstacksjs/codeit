@@ -11,7 +11,7 @@ export const createSchema = () =>
       typegen: resolve(__dirname, '../node_modules/@types/nexus-typegen/index.d.ts'),
     },
     contextType: {
-      module: require.resolve('./context'),
+      module: require.resolve('./createContext.ts'),
       export: 'Context',
       alias: 'Context',
     },
