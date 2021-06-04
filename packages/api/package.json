@@ -5,7 +5,7 @@
   "scripts": {
     "build": "tsc",
     "!predev": "npm run prisma:generate",
-    "dev": "ts-node-dev --respawn --transpile-only --exit-child ./src/graphql.ts",
+    "dev": "ts-node-dev --respawn --transpile-only --exit-child ./src/index.ts",
     "nexus:generate": "ts-node ./src/graphql.ts",
     "prisma:migrate:dev": "prisma migrate dev",
     "prisma:generate": "prisma generate"
