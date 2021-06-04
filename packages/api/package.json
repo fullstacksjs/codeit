@@ -7,7 +7,7 @@
     "!predev": "npm run prisma:generate",
     "dev": "ts-node-dev --respawn --transpile-only --exit-child ./src/index.ts",
     "prisma:migrate:dev": "prisma migrate dev",
-    "prisma:generate": "prisma generate"
+    "prisma:gen": "prisma generate"
   },
   "license": "MIT",
   "dependencies": {
