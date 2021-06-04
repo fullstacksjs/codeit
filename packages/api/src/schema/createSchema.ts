@@ -8,7 +8,7 @@ export const createSchema = () =>
     types,
     outputs: {
       schema: false,
-      typegen: resolve(__dirname, '../node_modules/@types/nexus-typegen/index.d.ts'),
+      typegen: resolve(__dirname, '../../node_modules/@types/nexus-typegen/index.d.ts'),
     },
     contextType: {
       module: require.resolve('./createContext.ts'),
