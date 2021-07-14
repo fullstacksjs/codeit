@@ -1,4 +1,4 @@
-import t from 'io-ts';
+import * as t from 'io-ts';
 
 interface EmailBrand {
   readonly Email: unique symbol;
