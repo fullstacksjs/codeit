@@ -1,6 +1,6 @@
 # Introduction
 
-The code generator is the program which will write in every available language the boilerplate code
+The stub generator is the program which will write in every available language the boilerplate code
 you get when you open the editor. To do this, the generator needs input written using the syntax
 below.
 
@@ -188,7 +188,7 @@ console.log('0');
 
 but still, they are **not required** they can be excluded in the generated code.
 
-# more on `string` and `word`
+# More on `string` and `word`
 
 let's talk a little more about the gap between a `word` and a `string` let's consider this scenario
 
@@ -261,7 +261,7 @@ if we had the generator
 
 ### make a generator
 
-so if you want to make a contribution on this project you can start by creating a code generator for
+so if you want to make a contribution on this project you can start by creating a stub generator for
 any language you like or need, which takes this syntax and generates boilerplate code for it so that
 the players don't have to waste their time on getting the right input.
 
@@ -276,11 +276,11 @@ sense.
 # Generators
 
 these are the languages that a generator is built for it any other language that is **not** on this
-list is open for a code generator.
+list is open for a stub generator.
 
 - Javascript
 
-# credit
+# Credit
 
 this general syntax specification is exactly what [codingame](https://www.codingame.com/) uses, so
 take look there too if you'd like to
