@@ -130,8 +130,9 @@ for (let i = 0; i < count; i++) {
 }
 ```
 
-so basically, everything that comes after `loop <amount>` can be a command, which means this command
+so basically, everything that comes after `loop <amount>` can be a itself a command, which means the `loop` command
 is recursive, so you can have for example nested loops.
+note that this doesn't apply on `loopline` so you won't be seeing any nested `loopline`s
 
 ```
 read n:int
