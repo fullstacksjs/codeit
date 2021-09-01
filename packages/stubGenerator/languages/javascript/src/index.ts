@@ -3,7 +3,7 @@ import { match } from 'ts-pattern';
 
 import {
   // parseLoopCommand,
-  // parseLooplineCommand,
+  parseLooplineCommand,
   parseReadCommand,
   // parseWriteCommand,
 } from './commandParsers/';
@@ -13,7 +13,7 @@ export const parseLine = (line: string) => {
   return (
     match(command)
       .with('read', () => parseReadCommand(rest))
-      // .with('loopline', () => parseLooplineCommand(rest))
+      .with('loopline', () => parseLooplineCommand(rest))
       // .with('loop', () => parseLoopCommand(rest))
       // .with('write', () => parseWriteCommand(rest))
       .otherwise(() => '')
