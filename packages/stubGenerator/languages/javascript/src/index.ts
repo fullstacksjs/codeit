@@ -5,19 +5,17 @@ import {
   parseLoopCommand,
   parseLooplineCommand,
   parseReadCommand,
-  // parseWriteCommand,
+  parseWriteCommand,
 } from './commandParsers/';
 
 export const parseLine = (line: string) => {
   const [command, ...rest] = line.trim().split(' ');
-  return (
-    match(command)
-      .with('read', () => parseReadCommand(rest))
-      .with('loopline', () => parseLooplineCommand(rest))
-      .with('loop', () => parseLoopCommand(rest))
-      // .with('write', () => parseWriteCommand(rest))
-      .otherwise(() => '')
-  );
+  return match(command)
+    .with('read', () => parseReadCommand(rest))
+    .with('loopline', () => parseLooplineCommand(rest))
+    .with('loop', () => parseLoopCommand(rest))
+    .with('write', () => parseWriteCommand(rest))
+    .otherwise(() => '');
 };
 
 export const generateJavascriptStub = (input: string) => {

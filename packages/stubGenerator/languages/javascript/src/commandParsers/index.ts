@@ -2,4 +2,4 @@
 export * from './parseLoopCommand';
 export * from './parseLooplineCommand';
 export * from './parseReadCommand';
-// export * from './parseWriteCommand';
+export * from './parseWriteCommand';
