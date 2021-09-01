@@ -3,7 +3,7 @@ import { match } from 'ts-pattern';
 import { Language } from '../core';
 import { generateJavascriptStub } from './languages/javascript/src';
 
-export const generateStub = (syntax: string, language: Language): string =>
+export const generateStub = (language: Language, syntax: string): string =>
   match(language)
     .with('JavaScript', () => generateJavascriptStub(syntax))
     .with('TypeScript', () => generateJavascriptStub(syntax))
