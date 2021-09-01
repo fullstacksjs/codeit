@@ -1,10 +1,12 @@
-# Introduction
+# StubGenerator
+
+## Introduction
 
 The stub generator is the program which will write in every available language the boilerplate code
 you get when you open the editor. To do this, the generator needs input written using the syntax
 below.
 
-# General Syntax
+## General Syntax
 
 Each line must contain one of the following command :
 
@@ -189,7 +191,7 @@ console.log('0');
 
 but still, they are **not required** they can be excluded in the generated code.
 
-# More on `string` and `word`
+## More on `string` and `word`
 
 let's talk a little more about the gap between a `word` and a `string` let's consider this scenario
 
@@ -252,13 +254,13 @@ like the above example.
 
 hope this clears up everything.
 
-# Ok but why?
+## Ok but why?
 
 this **general syntax** belongs to Codeit puzzles. because it is a **general** syntax we can store
 only this syntax and generate appropriate boilerplate code for every programming language, of course
 if we had the generator
 
-# What can you do
+## What can you do
 
 ### make a generator
 
@@ -274,14 +276,14 @@ your choice.
 you can also contribute by fixing an already existing generator, or improve its source code in any
 sense.
 
-# Generators
+## Generators
 
 these are the languages that a generator is built for it any other language that is **not** on this
 list is open for a stub generator.
 
 - Javascript
 
-# Credit
+## Credit
 
 this general syntax specification is exactly what [codingame](https://www.codingame.com/) uses, so
 take look there too if you'd like to
