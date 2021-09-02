@@ -1,3 +1,4 @@
+import { toCapitalCase } from '@fullstacksjs/toolbox';
 import * as R from 'ramda';
 import { match } from 'ts-pattern';
 
@@ -9,7 +10,7 @@ import {
   typeOf,
   Variable,
 } from '../domain/';
-import { capitalize, throwErr } from '../utils';
+import { throwErr } from '../utils';
 
 const declareVariable = ([varName, type]: string[], to: string) =>
   match(type)
@@ -21,7 +22,7 @@ const declareVariable = ([varName, type]: string[], to: string) =>
 const parseVariablesOfDifferentType = (vars: Variable[]) => {
   const nonWordsVars = vars.filter(R.pipe(typeOf, R.equals('word'), R.not));
   const varsWithPlaceholder = vars.map(([name, type]): string =>
-    type === 'word' ? name : `raw${capitalize(name)}`,
+    type === 'word' ? name : `raw${toCapitalCase(name)}`,
   );
   return `const [${varsWithPlaceholder.join(', ')}] = readline().split(' ');
     ${R.zipWith(
