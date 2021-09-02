@@ -1,7 +1,7 @@
 import { match } from 'ts-pattern';
 
 import { Language } from '../core';
-import { generateJavascriptStub } from './languages/javascript/src';
+import { generateJavascriptStub } from './languages/';
 
 export const generateStub = (language: Language, syntax: string): string =>
   match(language)
