@@ -19,7 +19,7 @@ const declareVariable = ([varName, type]: string[], to: string) =>
     .with('float', () => `const ${varName} = toFloat(${to});`)
     .with('int', () => `const ${varName} = toInt(${to});`)
     .when(R.startsWith('string'), () => `const ${varName} = ${to};`)
-    .otherwise(() => throwErr(`variable type ${type} is unknown`));
+    .otherwise(() => throwErr(`variable type "${type}" is unknown`));
 
 const parseVariablesOfDifferentType = (vars: Variable[]) => {
   const nonWordsVars = vars.filter(R.pipe(typeOf, R.equals('word'), R.not));
