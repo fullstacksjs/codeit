@@ -12,6 +12,8 @@ import {
 } from '../domain/';
 import { throwErr } from '../utils';
 
+const constLhsDestruction = (varNames: string[]) => `const [${varNames.join(', ')}]`;
+
 const declareVariable = ([varName, type]: string[], to: string) =>
   match(type)
     .with('float', () => `const ${varName} = toFloat(${to});`)
@@ -24,7 +26,7 @@ const parseVariablesOfDifferentType = (vars: Variable[]) => {
   const varsWithPlaceholder = vars.map(([name, type]): string =>
     type === 'word' ? name : `raw${toCapitalCase(name)}`,
   );
-  return `const [${varsWithPlaceholder.join(', ')}] = readline().split(' ');
+  return `${constLhsDestruction(varsWithPlaceholder)} = readline().split(' ');
     ${R.zipWith(
       declareVariable,
       nonWordsVars,
@@ -38,13 +40,13 @@ const declareMultipleVariables = (vars: Variable[]) => {
   return match(vars)
     .when(
       isAllOfType('int'),
-      () => `const [${varNames.join(',')}] = readline().split(" ").map(toInt);`,
+      () => `${constLhsDestruction(varNames)} = readline().split(" ").map(toInt);`,
     )
     .when(
       isAllOfType('float'),
-      () => `const [${varNames.join(',')}] = readline().split(" ").map(toFloat);`,
+      () => `${constLhsDestruction(varNames)} = readline().split(" ").map(toFloat);`,
     )
-    .when(isAllOfType('word'), () => `const [${varNames.join(',')}] = readline().split(" ")`)
+    .when(isAllOfType('word'), () => `${constLhsDestruction(varNames)} = readline().split(" ")`)
     .otherwise(parseVariablesOfDifferentType);
 };
 
