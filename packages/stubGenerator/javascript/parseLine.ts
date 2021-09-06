@@ -6,7 +6,7 @@ import {
   parseLooplineCommand,
   parseReadCommand,
   parseWriteCommand,
-} from './commandParsers/';
+} from './commandParsers';
 
 export const parseLine = (line: string) => {
   const [command, ...rest] = line.trim().split(' ');

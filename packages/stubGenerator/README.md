@@ -1,0 +1,1 @@
+../../docs/stub-generator.md
