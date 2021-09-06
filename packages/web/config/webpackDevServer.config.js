@@ -1,15 +1,24 @@
-const { toInteger, getEnv } = require('@fullstacksjs/toolbox');
 const paths = require('./paths');
+const getHttpsConfig = require('./getHttpsConfig');
+const { getEnv, toInteger } = require('@fullstacksjs/toolbox');
 
-const port = toInteger(getEnv('WEB_PORT', 3000));
-const host = getEnv('WEB_HOST', '0.0.0.0');
-
+/**
+ * @type { import('webpack-dev-server').Configuration }
+ */
 module.exports = {
-  contentBase: paths.appPublic,
-  contentBasePublicPath: paths.publicPath,
-  host,
+  host: getEnv('WEB_HOST', '0.0.0.0'),
+  port: toInteger(getEnv('WEB_PORT', 3000)),
   hot: true,
-  port,
-  publicPath: paths.publicPath,
-  watchContentBase: true,
+  static: {
+    directory: paths.appPublic,
+    publicPath: paths.publicPath,
+  },
+  client: {
+    logging: 'none',
+  },
+  devMiddleware: {
+    publicPath: paths.publicPath,
+    stats: 'minimal',
+  },
+  https: getHttpsConfig(),
 };

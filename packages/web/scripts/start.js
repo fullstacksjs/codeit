@@ -4,12 +4,15 @@ process.env.BABEL_ENV = 'development';
 process.env.NODE_ENV = 'development';
 
 const chalk = require('chalk');
-const config = require('../config/webpack.config');
+const webpack = require('webpack');
+const WebpackDevServer = require('webpack-dev-server');
+const webpackConfig = require('../config/webpack.config');
 const devServerConfig = require('../config/webpackDevServer.config');
-const DevServer = require('./DevServer');
 
 function start() {
-  return new DevServer(config, devServerConfig).listen();
+  const compiler = webpack(webpackConfig);
+  const server = new WebpackDevServer({ ...devServerConfig, setupExitSignals: true }, compiler);
+  return server.start();
 }
 
 start()
