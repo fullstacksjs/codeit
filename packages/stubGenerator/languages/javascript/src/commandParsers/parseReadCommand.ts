@@ -14,25 +14,23 @@ import { throwErr } from '../utils';
 
 const constLhsDestruction = (varNames: string[]) => `const [${varNames.join(', ')}]`;
 
-const declareVariable = ([varName, type]: string[], to: string) =>
+const declareVariable = ([varName, type]: Variable, to: string) =>
   match(type)
     .with('float', () => `const ${varName} = toFloat(${to});`)
     .with('int', () => `const ${varName} = toInt(${to});`)
     .when(R.startsWith('string'), () => `const ${varName} = ${to};`)
     .otherwise(() => throwErr(`variable type "${type}" is unknown`));
 
+const placeholderOf = (n: string) => `raw${toCapitalCase(n)}`;
+const declarePlaceholderVariable = (vars: Variable[]) =>
+  vars
+    .filter(R.pipe(typeOf, R.equals('word'), R.not))
+    .map(([name, type]) => declareVariable([name, type], placeholderOf(name)));
+
 const parseVariablesOfDifferentType = (vars: Variable[]) => {
-  const nonWordsVars = vars.filter(R.pipe(typeOf, R.equals('word'), R.not));
-  const varsWithPlaceholder = vars.map(([name, type]): string =>
-    type === 'word' ? name : `raw${toCapitalCase(name)}`,
-  );
-  return `${constLhsDestruction(varsWithPlaceholder)} = readline().split(' ');
-    ${R.zipWith(
-      declareVariable,
-      nonWordsVars,
-      varsWithPlaceholder.filter(R.startsWith('raw')),
-    ).join('\n')}
-  `;
+  const varNames = vars.map(([name, type]) => (type === 'word' ? name : placeholderOf(name)));
+  return `${constLhsDestruction(varNames)} = readline().split(' ');
+${declarePlaceholderVariable(vars).join('\n')}`;
 };
 
 const declareMultipleVariables = (vars: Variable[]) => {
