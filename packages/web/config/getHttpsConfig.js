@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
-const chalk = require('react-dev-utils/chalk');
+const chalk = require('chalk');
 const paths = require('./paths');
 
 function validateKeyAndCerts({ cert, key, keyFile, crtFile }) {
