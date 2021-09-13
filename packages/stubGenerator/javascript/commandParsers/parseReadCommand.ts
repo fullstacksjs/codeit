@@ -2,14 +2,8 @@ import { toCapitalCase } from '@fullstacksjs/toolbox';
 import * as R from 'ramda';
 import { match } from 'ts-pattern';
 
-import {
-  eliminateConstrains,
-  isAllOfType,
-  nameOf,
-  replaceLongsWithInt,
-  typeOf,
-  Variable,
-} from '../domain/';
+import { nameOf, Read, typeOf, Variable } from '../../../core';
+import { isAllOfType } from '../../domain/';
 import { throwErr } from '../utils';
 
 const constLhsDestruction = (varNames: string[]) => `const [${varNames.join(', ')}]`;
@@ -38,20 +32,18 @@ const declareMultipleVariables = (vars: Variable[]) => {
   return match(vars)
     .when(
       isAllOfType('int'),
-      () => `${constLhsDestruction(varNames)} = readline().split(" ").map(toInt);`,
+      () => `${constLhsDestruction(varNames)} = readline().split(' ').map(toInt);`,
     )
     .when(
       isAllOfType('float'),
-      () => `${constLhsDestruction(varNames)} = readline().split(" ").map(toFloat);`,
+      () => `${constLhsDestruction(varNames)} = readline().split(' ').map(toFloat);`,
     )
-    .when(isAllOfType('word'), () => `${constLhsDestruction(varNames)} = readline().split(" ")`)
+    .when(isAllOfType('word'), () => `${constLhsDestruction(varNames)} = readline().split(' ')`)
     .otherwise(parseVariablesOfDifferentType);
 };
 
-export const parseReadCommand = (rawVariable: string[]): string => {
-  const [firstVar, ...rest] = rawVariable.map(
-    R.pipe(R.split(':'), replaceLongsWithInt, eliminateConstrains),
-  ) as Variable[];
+export const parseReadCommand = ([_, variables]: Read): string => {
+  const [firstVar, ...rest] = variables;
 
   const isSingleDeclaration = R.equals(rest, []);
   return isSingleDeclaration
