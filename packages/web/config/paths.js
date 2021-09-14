@@ -1,19 +1,17 @@
 const path = require('path');
 const fs = require('fs');
+const { getEnv } = require('@fullstacksjs/toolbox');
 
 const appDirectory = fs.realpathSync(process.cwd());
-const resolveApp = (relativePath) => path.resolve(appDirectory, relativePath);
+const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 
 module.exports = {
+  appPublic: resolveApp('public'),
+  appSrc: resolveApp('src'),
+  appHtml: resolveApp('public/index.html'),
+  appEntrypoint: resolveApp('src/index.tsx'),
+  publicPath: getEnv('PUBLIC_URL', '/'),
+  appPackageJson: resolveApp('package.json'),
   appPath: resolveApp('.'),
   appBuild: resolveApp('build'),
-  appPublic: resolveApp('public'),
-  appHtml: resolveApp('public/index.html'),
-  appPackageJson: resolveApp('package.json'),
-  appIndexJs: resolveApp('src/index.tsx'),
-  appSrc: resolveApp('src'),
-  appNodeModules: resolveApp('node_modules'),
-  codegenConfig: resolveApp('codegen.yml'),
-  publicPath: process.env.PUBLIC_URL ?? '/',
-  resolve: resolveApp,
 };

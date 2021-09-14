@@ -1,79 +1,91 @@
-const path = require('path');
-const { env } = require('@frontendmonster/utils');
-const { HotModuleReplacementPlugin, EnvironmentPlugin } = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
-const InlineChunkHtmlPlugin = require('react-dev-utils/InlineChunkHtmlPlugin');
-const TerserPlugin = require('terser-webpack-plugin');
-const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
-
-const webpackDevClientEntry = require.resolve('react-dev-utils/webpackHotDevClient');
-const reactRefreshOverlayEntry = require.resolve('react-dev-utils/refreshOverlayInterop');
-
-const ManifestPlugin = require('webpack-manifest-plugin');
-const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
+/* eslint-disable camelcase */
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
-const clientEnv = require('./env');
+const { Env } = require('@fullstacksjs/toolbox');
+const { DefinePlugin } = require('webpack');
+const clientEnvs = require('./clientEnvs');
+const TerserPlugin = require('terser-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
 const paths = require('./paths');
+const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 
-const { isProd, isDev } = env;
-const isProfile = isProd && false;
-const sourceMap = false;
+const isProfile = false;
 
-const terser = new TerserPlugin({
-  terserOptions: {
-    parse: { ecma: 8 },
-    compress: {
-      ecma: 5,
-      warnings: false,
-      comparisons: false,
-      inline: 2,
-    },
-    mangle: { safari10: true },
-    keep_classnames: isProfile,
-    keep_fnames: isProfile,
-    output: {
-      ecma: 5,
-      comments: false,
-      ascii_only: true,
-    },
-  },
-  sourceMap,
-});
-
-const shouldInlineRuntimeChunk = true;
-
+/**
+ * @type { import('webpack').Configuration }
+ */
 const config = {
-  mode: isProd ? 'production' : 'development',
-  bail: isProd,
-  devtool: isProd ? 'source-map' : 'cheap-module-source-map',
-  entry: paths.appIndexJs,
-
+  mode: Env.isProd ? 'production' : 'development',
+  bail: Env.isProd,
+  devtool: Env.isProd ? 'source-map' : 'cheap-module-source-map',
+  entry: paths.appEntryPoint,
+  target: 'web',
   output: {
-    path: isProd ? paths.appBuild : undefined,
-    pathinfo: isDev,
-    filename: isProd ? 'static/js/[name].[contenthash:8].js' : isDev && 'static/js/bundle.js',
-    futureEmitAssets: true,
-    chunkFilename: isProd
+    path: Env.isProd ? paths.appBuild : undefined,
+    filename: Env.isProd ? 'static/js/[name].[contenthash:8].js' : 'static/js/[name].js',
+    chunkFilename: Env.isProd
       ? 'static/js/[name].[contenthash:8].chunk.js'
-      : isDev && 'static/js/[name].chunk.js',
+      : 'static/js/[name].chunk.js',
     publicPath: paths.publicPath,
-    devtoolModuleFilenameTemplate: isProd
+    devtoolModuleFilenameTemplate: Env.isProd
       ? info => path.relative(paths.appSrc, info.absoluteResourcePath).replace(/\\/g, '/')
-      : isDev && (info => path.resolve(info.absoluteResourcePath).replace(/\\/g, '/')),
+      : info => path.resolve(info.absoluteResourcePath).replace(/\\/g, '/'),
     globalObject: 'this',
   },
 
+  module: {
+    rules: [
+      {
+        oneOf: [
+          {
+            test: /\.(ts|tsx)$/,
+            include: paths.appSrc,
+            exclude: /node_modules/,
+            use: {
+              loader: 'babel-loader',
+              options: {
+                cacheDirectory: Env.isDev,
+                cacheCompression: false,
+                compact: Env.isProd,
+              },
+            },
+          },
+          {
+            test: /\.svg?$/,
+            loader: '@svgr/webpack',
+            options: {
+              prettier: false,
+              titleProp: true,
+              svgo: true,
+              svgoConfig: { plugins: [{ removeViewBox: false }] },
+            },
+            issuer: { and: [/\.(ts|tsx|js|jsx|md|mdx)$/] },
+          },
+        ],
+      },
+    ],
+  },
+
   optimization: {
-    minimize: isProd,
-    minimizer: [terser],
-    splitChunks: { chunks: 'all', name: isDev },
+    minimize: Env.isProd,
+    minimizer: [
+      new TerserPlugin({
+        parallel: true,
+        terserOptions: {
+          mangle: { safari10: true },
+          keep_classnames: isProfile,
+          keep_fnames: isProfile,
+          sourceMap: true,
+        },
+      }),
+    ],
+    splitChunks: { chunks: 'all' },
     runtimeChunk: { name: entrypoint => `runtime-${entrypoint.name}` },
   },
 
   resolve: {
-    modules: ['node_modules', paths.appSrc, paths.appNodeModules],
     extensions: ['.mjs', '.js', '.ts', '.tsx', '.json', '.jsx'],
+    modules: [paths.appSrc, 'node_modules'],
     alias: {
       ...(isProfile && {
         'react-dom$': 'react-dom/profiling',
@@ -82,116 +94,33 @@ const config = {
     },
   },
 
-  module: {
-    strictExportPresence: true,
-    rules: [
-      { parser: { requireEnsure: false } },
-      {
-        oneOf: [
-          {
-            test: /\.(js|mjs|jsx|ts|tsx)$/,
-            include: paths.appSrc,
-            loader: require.resolve('babel-loader'),
-            options: {
-              customize: require.resolve('babel-preset-react-app/webpack-overrides'),
-              presets: [[require.resolve('babel-preset-react-app'), { runtime: 'automatic' }]],
-              plugins: [isDev && require.resolve('react-refresh/babel')].filter(Boolean),
-              cacheDirectory: true,
-              cacheCompression: false,
-              compact: isProd,
-            },
-          },
-          {
-            test: /\.(js|mjs)$/,
-            exclude: /@babel(?:\/|\\{1,2})runtime/,
-            loader: require.resolve('babel-loader'),
-            options: {
-              babelrc: false,
-              configFile: false,
-              compact: false,
-              presets: [
-                [require.resolve('babel-preset-react-app/dependencies'), { helpers: true }],
-              ],
-              cacheDirectory: true,
-              cacheCompression: false,
-              sourceMaps: sourceMap,
-              inputSourceMap: sourceMap,
-            },
-          },
-          {
-            loader: require.resolve('file-loader'),
-            exclude: [/\.(js|mjs|jsx|ts|tsx|html|json|css)$/],
-            options: {
-              name: 'static/media/[name].[hash:8].[ext]',
-            },
-          },
-        ],
-      },
-    ],
+  infrastructureLogging: {
+    appendOnly: true,
+    colors: Env.isDev,
+    level: 'warn',
   },
 
   plugins: [
     new HtmlWebpackPlugin({
-      inject: true,
       template: paths.appHtml,
+      inject: true,
       minify: {
-        removeComments: isProd,
-        collapseWhitespace: isProd,
-        removeRedundantAttributes: isProd,
-        useShortDoctype: isProd,
-        removeEmptyAttributes: isProd,
-        removeStyleLinkTypeAttributes: isProd,
-        keepClosingSlash: isProd,
-        minifyJS: isProd,
-        minifyCSS: isProd,
-        minifyURLs: isProd,
+        removeComments: Env.isProd,
+        collapseWhitespace: Env.isProd,
+        removeRedundantAttributes: Env.isProd,
+        useShortDoctype: Env.isProd,
+        removeEmptyAttributes: Env.isProd,
+        removeStyleLinkTypeAttributes: Env.isProd,
+        keepClosingSlash: Env.isProd,
+        minifyJS: Env.isProd,
+        minifyCSS: Env.isProd,
+        minifyURLs: Env.isProd,
       },
     }),
-    new InterpolateHtmlPlugin(HtmlWebpackPlugin, clientEnv),
-    isProd &&
-      shouldInlineRuntimeChunk &&
-      new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/runtime-.+[.]js/]),
-    new ModuleNotFoundPlugin(paths.appPath),
-    new EnvironmentPlugin(Object.keys(clientEnv)),
-    isDev && new HotModuleReplacementPlugin(),
-    isDev &&
-      new ReactRefreshWebpackPlugin({
-        overlay: {
-          entry: webpackDevClientEntry,
-          // The expected exports are slightly different from what the overlay exports,
-          // so an interop is included here to enable feedback on module-level errors.
-          module: reactRefreshOverlayEntry,
-          // Since we ship a custom dev client and overlay integration,
-          // the bundled socket handling logic can be eliminated.
-          sockIntegration: false,
-        },
-      }),
-    isDev && new CaseSensitivePathsPlugin(),
-    new ManifestPlugin({
-      fileName: 'asset-manifest.json',
-      publicPath: paths.publicPath,
-      generate: (seed, files, entrypoints) => {
-        const manifestFiles = files.reduce(
-          (manifest, file) => ({ ...manifest, [file.name]: file.path }),
-          seed,
-        );
-        const entrypointFiles = entrypoints.main.filter(fileName => !fileName.endsWith('.map'));
-        return { files: manifestFiles, entrypoints: entrypointFiles };
-      },
-    }),
+    new DefinePlugin(clientEnvs),
+    Env.isDev && new ReactRefreshWebpackPlugin(),
+    Env.isDev && new CaseSensitivePathsPlugin(),
   ].filter(Boolean),
-
-  node: {
-    module: 'empty',
-    dgram: 'empty',
-    dns: 'mock',
-    fs: 'empty',
-    http2: 'empty',
-    net: 'empty',
-    tls: 'empty',
-    child_process: 'empty',
-  },
-  performance: false,
 };
 
 module.exports = config;
