@@ -3,6 +3,7 @@ export * from './Language';
 export * from './Player';
 export * from './Puzzle';
 export * from './PuzzleMode';
+export * from './repo';
 export * from './Solution';
 export * from './stubGenerator';
 export * from './TestCase';

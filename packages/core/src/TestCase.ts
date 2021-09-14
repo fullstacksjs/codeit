@@ -11,3 +11,4 @@ export const TestCase = t.type({
   assertion: t.string,
   mode: TestCaseMode,
 });
+export type TestCase = t.TypeOf<typeof TestCase>;

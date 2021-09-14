@@ -17,3 +17,5 @@ export const Puzzle = t.type({
   initialTemplate: t.string,
   testCases: t.array(TestCase),
 });
+
+export type Puzzle = t.TypeOf<typeof Puzzle>;

@@ -11,3 +11,5 @@ export const Player = t.type({
   email: Email,
   displayName: tt.NonEmptyString,
 });
+
+export type Player = t.TypeOf<typeof Player>;

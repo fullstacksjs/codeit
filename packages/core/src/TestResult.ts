@@ -9,3 +9,4 @@ export const TestResult = t.type({
   outputs: t.array(TestOutput),
   status: TestResultStatus,
 });
+export type TestResult = t.TypeOf<typeof TestResult>;
