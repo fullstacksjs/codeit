@@ -4,8 +4,11 @@
   "version": "0.0.0",
   "description": "An interactive coding playground",
   "scripts": {
+    "dev": "./scripts/dev/dev",
     "lint": "lerna run lint --stream --concurrency=1",
     "spell": "cspell ./packages/**/*.{ts,tsx}",
+    "bootstrap": "./scripts/dev/bootstrap",
+    "verify": "lerna run lint && lerna run test --stream",
     "prepare": "husky install config/husky"
   },
   "repository": {
