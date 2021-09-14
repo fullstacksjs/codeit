@@ -1,4 +1,5 @@
 {
+  "private": true,
   "name": "@codeit/api",
   "version": "0.0.0",
   "description": "CodeIt API",
@@ -23,5 +24,8 @@
     "ts-node": "10.2.1",
     "ts-node-dev": "1.1.8",
     "typescript": "4.4.3"
+  },
+  "volta": {
+    "extends": "../../package.json"
   }
 }

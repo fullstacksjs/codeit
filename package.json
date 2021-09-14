@@ -1,6 +1,6 @@
 {
-  "name": "codeit",
   "private": true,
+  "name": "codeit",
   "version": "0.0.0",
   "description": "An interactive coding playground",
   "scripts": {
@@ -29,5 +29,9 @@
     "lint-staged": "11.1.2",
     "prettier": "2.4.0",
     "typescript": "4.4.3"
+  },
+  "volta": {
+    "node": "16.9.1",
+    "npm": "7.23.0"
   }
 }
