@@ -1,2 +1,2 @@
-FROM node:14.16-slim
+FROM node:16.9-slim
 COPY .npmrc .prettierignore .prettierrc.js lerna.json package.json package-lock.json tsconfig.react.json tsconfig.base.json ./

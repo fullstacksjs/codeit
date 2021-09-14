@@ -1,5 +1,9 @@
-#!/bin/sh
+#!/bin/bash
 set -e
+
+npm i
+npx lerna bootstrap
+find . -name package-lock.json -not -path '*/node_modules/*' -exec npx prettier {} --write \;
 
 docker build --tag=codeit/dev:latest -f config/docker/base/Dockerfile.dev .
 docker-compose -f ./docker-compose.base.yml -f ./docker-compose.dev.yml build "$@"
