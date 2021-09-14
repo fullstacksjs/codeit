@@ -6,9 +6,10 @@
   "scripts": {},
   "keywords": [],
   "dependencies": {
-    "fp-ts": "^2.10.4",
-    "io-ts": "^2.2.16",
-    "io-ts-types": "^0.5.16"
+    "fp-ts": "2.10.4",
+    "io-ts": "2.2.16",
+    "io-ts-types": "0.5.16",
+    "newtype-ts": "0.3.4"
   },
   "license": "MIT"
 }
