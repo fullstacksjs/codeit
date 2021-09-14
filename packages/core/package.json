@@ -5,7 +5,6 @@
   "description": "Codeit core package",
   "main": "index.js",
   "scripts": {},
-  "keywords": [],
   "dependencies": {
     "fp-ts": "2.10.4",
     "io-ts": "2.2.16",

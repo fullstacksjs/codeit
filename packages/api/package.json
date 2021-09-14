@@ -5,7 +5,7 @@
   "description": "CodeIt API",
   "scripts": {
     "build": "tsc",
-    "!predev": "npm run prisma:gen",
+    "predev": "npm run prisma:gen",
     "dev": "ts-node-dev --respawn --transpile-only --exit-child ./src/index.ts",
     "prisma:migrate:dev": "prisma migrate dev",
     "prisma:gen": "prisma generate"
