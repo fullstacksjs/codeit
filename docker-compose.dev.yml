@@ -16,6 +16,23 @@ services:
     environment:
       NODE_ENV: development
 
+  studio:
+    container_name: codeit_studio
+    build:
+      context: .
+      dockerfile: config/docker/prisma/Dockerfile.studio
+    restart: always
+    ports:
+      - 5555:5555
+    volumes:
+      - ./packages/api:/prisma
+    environment:
+      DB_URI: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}?schema=${POSTGRES_SCHEMA}
+    depends_on:
+      - postgres
+    networks:
+      - db_network
+
 volumes:
   api_nm:
   api_root_nm:
