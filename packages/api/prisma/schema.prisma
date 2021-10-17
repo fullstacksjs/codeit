@@ -1,4 +1,4 @@
-datasource db {
+datasource codeit {
   provider = "postgresql"
   url      = env("DATABASE_URI")
 }
@@ -7,7 +7,63 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model User {
-  id   String  @id @default(uuid())
-  name String?
+model Player {
+  id          String @id @default(uuid())
+  email       String @unique
+  username    String @unique
+  displayName String
+}
+
+enum TestCaseMode {
+  final
+  sample
+}
+
+enum Language {
+  TypeScript
+  JavaScript
+  Haskell
+  Java
+  Cpp
+  Csharp
+  Fsharp
+  Go
+  C
+}
+
+model InitialTemplate {
+  id       String   @id @default(uuid())
+  language Language
+  template String
+  puzzleId String
+  Puzzle   Puzzle   @relation(fields: [puzzleId], references: [id])
+
+  @@unique([puzzleId, language])
+}
+
+model TestCase {
+  id        String       @id @default(uuid())
+  title     String
+  input     String
+  assertion String
+  puzzleId  String
+  Puzzle    Puzzle       @relation(fields: [puzzleId], references: [id])
+  mode      TestCaseMode
+}
+
+enum PuzzleMode {
+  normal
+  reverse
+}
+
+model Puzzle {
+  id                String            @id @default(uuid())
+  title             String
+  statement         String
+  constraint        String
+  inputDescription  String
+  outputDescription String
+  mode              PuzzleMode
+  initialTemplates  InitialTemplate[]
+  testCases         TestCase[]
 }
