@@ -1,6 +1,13 @@
 {
   "extends": "@fullstacksjs/tsconfig",
   "compilerOptions": {
-    "outDir": "dist"
+    "outDir": "dist",
+    "baseUrl": "./packages",
+    "paths": {
+      "@codeit/api": ["api/src/*"],
+      "@codeit/core": ["core/src"],
+      "@codeit/stubGenerator": ["stubGenerator/src/*"],
+      "@codeit/web": ["web/src/*"]
+    }
   }
 }
