@@ -1,17 +1,14 @@
-import { isNullOrEmpty } from '@fullstacksjs/toolbox';
-import { constant, flow, pipe } from 'fp-ts/lib/function';
+import { Loop } from '@codeit/core';
+import { pipe } from 'fp-ts/lib/function';
 import * as O from 'fp-ts/lib/Option';
-import { join, not } from 'ramda';
+import { Do } from 'fp-ts-contrib/Do';
+import { join } from 'ramda';
 
-import { Loop } from '../../core';
+// eslint-disable-next-line import/no-cycle
 import { parseLine } from './parseLine';
 
-export const parseLoop = ([count, ...instruction]: string[]): O.Option<Loop> =>
-  pipe(
-    count,
-    O.fromPredicate(flow(isNullOrEmpty, not)),
-    O.map(constant(instruction)),
-    O.map(join(' ')),
-    O.chain(parseLine),
-    O.map(i => ['loop', count, i]),
-  );
+export const parseLoop = ([rawCount, ...instructions]: string[]): O.Option<Loop> =>
+  Do(O.Monad)
+    .bind('count', O.fromNullable(rawCount))
+    .bind('instruction', pipe(instructions, join(' '), parseLine))
+    .return(({ count, instruction }) => ['loop', count, instruction]);
