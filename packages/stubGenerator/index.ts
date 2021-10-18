@@ -1,7 +1,7 @@
+import { Language } from '@codeit/core';
 import { pipe } from 'fp-ts/lib/function';
 import { match } from 'ts-pattern';
 
-import { Language } from '../core';
 import { generateJavascriptStub } from './javascript';
 import { parseSyntax } from './syntaxParser/parseSyntax';
 

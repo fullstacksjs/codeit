@@ -11,6 +11,7 @@
     "@fullstacksjs/toolbox": "1.4.0",
     "chai": "4.3.4",
     "fp-ts": "2.11.1",
+    "fp-ts-contrib": "0.1.26",
     "mocha": "9.1.1",
     "ramda": "0.27.1",
     "ts-pattern": "3.2.5"

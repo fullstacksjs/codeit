@@ -1,7 +1,8 @@
+import { Instruction } from '@codeit/core';
 import * as O from 'fp-ts/lib/Option';
 import { match } from 'ts-pattern';
 
-import { Instruction } from '../../core';
+// eslint-disable-next-line import/no-cycle
 import { parseLoop } from './parseLoop';
 import { parseLoopline } from './parseLoopline';
 import { parseRead } from './parseRead';

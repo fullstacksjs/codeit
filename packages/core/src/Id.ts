@@ -1,6 +1,6 @@
 import * as t from 'io-ts';
 
-interface IdBrand {
+export interface IdBrand {
   readonly Id: unique symbol;
 }
 

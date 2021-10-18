@@ -1,4 +1,5 @@
-import { Syntax } from '../../core';
+import { Syntax } from '@codeit/core';
+
 import { parseLine } from './parseLine';
 
 export const generateJavascriptStub = (input: Syntax) => {

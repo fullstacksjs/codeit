@@ -25,12 +25,14 @@
   "license": "MIT",
   "devDependencies": {
     "@fullstacksjs/eslint-config": "6.5.1",
+    "@fullstacksjs/tsconfig": "0.6.0",
     "cspell": "5.9.1",
     "eslint": "7.32.0",
     "husky": "7.0.2",
     "lerna": "4.0.0",
     "lint-staged": "11.1.2",
     "prettier": "2.4.0",
+    "tsconfig-paths": "3.11.0",
     "typescript": "4.4.3"
   },
   "volta": {

@@ -1,6 +1,6 @@
 import * as t from 'io-ts';
 
-interface UsernameBrand {
+export interface UsernameBrand {
   readonly Username: unique symbol;
 }
 

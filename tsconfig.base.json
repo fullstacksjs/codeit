@@ -1,29 +1,16 @@
 {
-  "compileOnSave": false,
+  "extends": "@fullstacksjs/tsconfig",
   "compilerOptions": {
-    "rootDir": ".",
-    "module": "CommonJS",
-    "target": "ES2020",
-    "moduleResolution": "Node",
-    "emitDecoratorMetadata": true,
-    "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "forceConsistentCasingInFileNames": true,
-    "importsNotUsedAsValues": "preserve",
-    "lib": [
-      "DOM",
-      "ES2020"
-    ],
-    "noEmitOnError": true,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitReturns": true,
-    "noUnusedLocals": true,
-    "removeComments": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "sourceMap": true,
-    "strict": true,
+    "outDir": "dist",
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@codeit/api": ["packages/api/src/*"],
+      "@codeit/core": ["packages/core/src"],
+      "@codeit/stubGenerator": ["packages/stubGenerator/src/*"],
+      "@codeit/web": ["packages/web/src/*"]
+    }
+  },
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
   }
 }

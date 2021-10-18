@@ -1,6 +1,6 @@
 import * as t from 'io-ts';
 
-interface TitleBrand {
+export interface TitleBrand {
   readonly Title: unique symbol;
 }
 

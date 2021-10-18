@@ -1,8 +1,8 @@
+import { nameOf, Read, typeOf, Variable } from '@codeit/core';
 import { toCapitalCase } from '@fullstacksjs/toolbox';
 import * as R from 'ramda';
 import { match } from 'ts-pattern';
 
-import { nameOf, Read, typeOf, Variable } from '../../../core';
 import { isAllOfType } from '../../domain/';
 import { throwErr } from '../utils';
 
