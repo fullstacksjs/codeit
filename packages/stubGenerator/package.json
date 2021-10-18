@@ -8,7 +8,6 @@
     "build": "tsc --p tsconfig.build.json"
   },
   "dependencies": {
-    "@codeit/core": "*",
     "@fullstacksjs/toolbox": "1.4.0",
     "chai": "4.3.4",
     "fp-ts": "2.11.1",
