@@ -25,6 +25,7 @@
   "license": "MIT",
   "devDependencies": {
     "@fullstacksjs/eslint-config": "6.5.1",
+    "@fullstacksjs/tsconfig": "0.6.0",
     "cspell": "5.9.1",
     "eslint": "7.32.0",
     "husky": "7.0.2",
