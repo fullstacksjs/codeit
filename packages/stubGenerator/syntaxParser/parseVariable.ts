@@ -1,9 +1,9 @@
+import { Variable } from '@codeit/core';
 import { pipe } from 'fp-ts/lib/function';
 import * as O from 'fp-ts/lib/Option';
 import { split } from 'ramda';
 import { __, match } from 'ts-pattern';
 
-import { Variable } from '../../core';
 import { eliminateConstrains } from '../domain/eliminateConstrains';
 import { replaceLongsWithInt } from '../domain/replaceLongsWithInt';
 

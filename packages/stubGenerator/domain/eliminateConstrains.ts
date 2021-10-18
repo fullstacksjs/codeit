@@ -1,7 +1,6 @@
+import { VarType } from '@codeit/core';
 import { pipe } from 'fp-ts/lib/function';
 import * as R from 'ramda';
-
-import { VarType } from '../../core';
 
 export const eliminateConstrains = ([name, type]: [string, string]): [string, string] => [
   name,

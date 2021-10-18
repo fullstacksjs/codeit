@@ -1,6 +1,5 @@
+import { VarType } from '@codeit/core';
 import * as R from 'ramda';
-
-import { VarType } from '../../core';
 
 export const isAllOfType = (type: VarType) =>
   R.pipe(
