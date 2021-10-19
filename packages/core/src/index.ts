@@ -4,6 +4,7 @@ export * from './Player';
 export * from './PlayerRepo';
 export * from './Puzzle';
 export * from './PuzzleMode';
+export * from './PuzzleRepo';
 export * from './Solution';
 export * from './stubGenerator';
 export * from './TestCase';
