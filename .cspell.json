@@ -1,9 +1,7 @@
 {
   "version": "0.1",
   "language": "en",
-  "ignorePaths": [
-    "**/node_modules/**"
-  ],
+  "ignorePaths": ["**/node_modules/**", "/packages/api/prisma/seed/**/*"],
   "dictionaryDefinitions": [
     {
       "name": "libs",
@@ -16,9 +14,5 @@
       "file": "./dictionaries/keywords"
     }
   ],
-  "dictionaries": [
-    "node",
-    "libs",
-    "keywords"
-  ]
+  "dictionaries": ["node", "libs", "keywords"]
 }

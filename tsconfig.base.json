@@ -6,7 +6,7 @@
     "paths": {
       "@codeit/api": ["packages/api/src/*"],
       "@codeit/core": ["packages/core/src"],
-      "@codeit/stubGenerator": ["packages/stubGenerator/src/*"],
+      "@codeit/stubGenerator": ["packages/stubGenerator/"],
       "@codeit/web": ["packages/web/src/*"]
     }
   },
