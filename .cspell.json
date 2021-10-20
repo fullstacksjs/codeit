@@ -1,7 +1,7 @@
 {
   "version": "0.1",
   "language": "en",
-  "ignorePaths": ["**/node_modules/**", "/packages/api/prisma/seed/**/*"],
+  "ignorePaths": ["**/node_modules/**"],
   "dictionaryDefinitions": [
     {
       "name": "libs",
