@@ -8,6 +8,7 @@ services:
     volumes:
       - ./packages/core/src:/app/packages/core/src
       - ./packages/api/src:/app/packages/api/src
+      - ./packages/stubGenerator:/app/packages/stubGenerator
       - ./packages/api/prisma:/app/packages/api/prisma
       - api_nm:/app/packages/api/node_modules
       - api_root_nm:/app/node_modules
@@ -27,7 +28,7 @@ services:
     volumes:
       - ./packages/api:/prisma
     environment:
-      DB_URI: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}?schema=${POSTGRES_SCHEMA}
+      DATABASE_URI: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}?schema=${POSTGRES_SCHEMA}
     depends_on:
       - postgres
     networks:
