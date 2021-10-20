@@ -1,0 +1,3 @@
+#!/bin/sh
+
+docker-compose -f ./docker-compose.base.yml -f ./docker-compose.dev.yml run api npm run prisma:migrate:dev:reset

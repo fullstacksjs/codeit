@@ -1,6 +1,6 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["./src", "./prisma/seed"],
+  "include": ["./src/", "./prisma/", "test/"],
   "ts-node": {
     "require": ["tsconfig-paths/register"]
   }
