@@ -5,6 +5,7 @@
   "description": "An interactive coding playground",
   "scripts": {
     "dev": "./scripts/dev/dev",
+    "migrate-reset": "./scripts/dev/migrate-reset",
     "lint": "lerna run lint --stream --concurrency=1",
     "spell": "cspell ./packages/**/*.{ts,tsx}",
     "bootstrap": "./scripts/dev/bootstrap",
