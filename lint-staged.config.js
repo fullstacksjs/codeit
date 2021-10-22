@@ -1,3 +1,3 @@
 module.exports = {
-  '*.ts(x)?': ['eslint --fix', 'cspell'],
+  '*.ts(x)?': ['eslint --fix', 'cspell  --no-must-find-files'],
 };
