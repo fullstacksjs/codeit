@@ -6,6 +6,9 @@
   "scripts": {
     "prisma:migrate:dev:reset": "prisma migrate reset",
     "build": "tsc",
+    "nexus:gen": "ts-node ./src/schema/createSchema.ts",
+    "pretest": "prisma migrate reset --skip-seed --force",
+    "test": "jest",
     "predev": "npm run prisma:gen",
     "dev": "ts-node-dev  -r tsconfig-paths/register --respawn --transpile-only --exit-child ./src/index.ts",
     "prisma:migrate:dev": "prisma migrate dev",

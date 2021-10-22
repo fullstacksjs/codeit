@@ -10,6 +10,7 @@ services:
       - ./packages/api/src:/app/packages/api/src
       - ./packages/stubGenerator:/app/packages/stubGenerator
       - ./packages/api/prisma:/app/packages/api/prisma
+      - ./packages/api/test:/app/packages/api/test
       - api_nm:/app/packages/api/node_modules
       - api_root_nm:/app/node_modules
       - api_core_nm:/app/packages/core/node_modules
