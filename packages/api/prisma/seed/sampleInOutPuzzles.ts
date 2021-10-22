@@ -1,7 +1,7 @@
 import { generateStub } from '@codeit/stubGenerator';
 import { Prisma } from '@prisma/client';
 
-export const seedingPuzzles: Prisma.PuzzleCreateInput[] = [
+export const sampleInOutPuzzles: Prisma.PuzzleCreateInput[] = [
   {
     title: 'When pigs fly',
     constraint:

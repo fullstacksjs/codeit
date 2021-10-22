@@ -1,7 +1,7 @@
 import { generateStub } from '@codeit/stubGenerator';
 import { Prisma } from '@prisma/client';
 
-export const seedingClashOfCodePuzzles: Prisma.PuzzleCreateInput[] = [
+export const sampleClashOfCodePuzzles: Prisma.PuzzleCreateInput[] = [
   {
     title: 'Multiply Plus Minus',
     constraint: '1 ≤ len([[input]]) ≤ 100',
