@@ -16,6 +16,9 @@ services:
     environment:
       DATABASE_URI: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}?schema=${POSTGRES_SCHEMA}
       NODE_ENV: test
+  studio:
+    deploy:
+      replicas: 0
 volumes:
   api_nm:
   api_root_nm:
