@@ -10,23 +10,41 @@ export class PrismaPuzzleRepo implements PuzzleRepo {
 
   getPuzzleById = (id: Id): TO.TaskOption<Puzzle> =>
     pipe(
-      TO.tryCatch(() => this.client.findFirst({ where: { id } })),
+      TO.tryCatch(() =>
+        this.client.findFirst({
+          where: { id },
+          include: { initialTemplates: true, testCases: true },
+        }),
+      ),
       TO.chain(TO.fromNullable),
       TO.chain(flow(Puzzle.decode, TO.fromEither)),
     );
 
   getPuzzleByTitle = (title: Title): TO.TaskOption<Puzzle> =>
     pipe(
-      TO.tryCatch(() => this.client.findFirst({ where: { title } })),
+      TO.tryCatch(() =>
+        this.client.findFirst({
+          where: { title },
+          include: { initialTemplates: true, testCases: true },
+        }),
+      ),
       TO.chain(TO.fromNullable),
       TO.chain(flow(Puzzle.decode, TO.fromEither)),
     );
 
   getRandomPuzzleByMode = (mode: PuzzleMode): TO.TaskOption<Puzzle> =>
     pipe(
-      TO.tryCatch(() => this.client.count()),
+      TO.tryCatch(() => this.client.count({ where: { mode } })),
       TO.map(max => randomInt({ min: 0, max })),
-      TO.chain(skip => TO.tryCatch(() => this.client.findFirst({ where: { mode }, skip }))),
+      TO.chain(skip =>
+        TO.tryCatch(() =>
+          this.client.findFirst({
+            where: { mode },
+            include: { initialTemplates: true, testCases: true },
+            skip,
+          }),
+        ),
+      ),
       TO.chain(TO.fromNullable),
       TO.chain(flow(Puzzle.decode, TO.fromEither)),
     );
@@ -35,7 +53,11 @@ export class PrismaPuzzleRepo implements PuzzleRepo {
     pipe(
       TO.tryCatch(() => this.client.count()),
       TO.map(max => randomInt({ min: 0, max })),
-      TO.chain(skip => TO.tryCatch(() => this.client.findFirst({ skip }))),
+      TO.chain(skip =>
+        TO.tryCatch(() =>
+          this.client.findFirst({ skip, include: { initialTemplates: true, testCases: true } }),
+        ),
+      ),
       TO.chain(TO.fromNullable),
       TO.chain(flow(Puzzle.decode, TO.fromEither)),
     );
