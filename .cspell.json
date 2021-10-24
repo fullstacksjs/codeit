@@ -1,18 +1,13 @@
 {
-  "version": "0.1",
+  "version": "0.2",
   "language": "en",
-  "ignorePaths": ["**/node_modules/**", "./packages/api/prisma/seed/**"],
+  "ignorePaths": ["**/node_modules/**", "./apps/api/prisma/seed/**"],
   "dictionaryDefinitions": [
-    {
-      "name": "libs",
-      "description": "NPM libraries",
-      "file": "./dictionaries/lib"
-    },
     {
       "name": "keywords",
       "description": "Project keywords",
-      "file": "./dictionaries/keywords"
+      "path": "./config/dictionaries/keywords.txt"
     }
   ],
-  "dictionaries": ["node", "libs", "keywords"]
+  "dictionaries": ["node", "keywords"]
 }

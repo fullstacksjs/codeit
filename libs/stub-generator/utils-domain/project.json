@@ -1,0 +1,15 @@
+{
+  "root": "libs/stub-generator/utils-domain",
+  "sourceRoot": "libs/stub-generator/utils-domain/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/stub-generator/utils-domain/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}

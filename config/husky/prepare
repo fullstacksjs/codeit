@@ -1,0 +1,4 @@
+#!/bin/bash
+
+[ -d .git/ ] && npx --no-install husky install ./config/husky
+exit 0

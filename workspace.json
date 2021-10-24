@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "projects": {
+    "api": "apps/api",
+    "playground": "apps/playground",
+    "playground-e2e": "apps/playground-e2e",
+    "shared-core": "libs/shared/core",
+    "stub-generator-parser-javascript": "libs/stub-generator/parser-javascript",
+    "stub-generator-stub-generator": "libs/stub-generator/stub-generator",
+    "stub-generator-utils-domain": "libs/stub-generator/utils-domain",
+    "stub-generator-utils-mocks": "libs/stub-generator/utils-mocks",
+    "stub-generator-utils-syntax-parser": "libs/stub-generator/utils-syntax-parser"
+  }
+}

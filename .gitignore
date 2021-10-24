@@ -7,7 +7,6 @@ coverage/
 # production
 dist/
 build/
-lib/
 
 # dev tools
 /.idea

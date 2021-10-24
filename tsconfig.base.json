@@ -2,15 +2,30 @@
   "extends": "@fullstacksjs/tsconfig",
   "compilerOptions": {
     "outDir": "dist",
+    "rootDir": ".",
+    "declaration": false,
+    "importHelpers": true,
+    "target": "ES2015",
+    "lib": ["ES2020", "DOM", "ES2020.Intl"],
     "baseUrl": ".",
     "paths": {
-      "@codeit/api": ["packages/api/src/*"],
-      "@codeit/core": ["packages/core/src"],
-      "@codeit/stubGenerator": ["packages/stubGenerator/"],
-      "@codeit/web": ["packages/web/src/*"]
+      "@codeit/core": ["libs/shared/core/src/index.ts"],
+      "@codeit/stub-generator": [
+        "libs/stub-generator/stub-generator/src/index.ts"
+      ],
+      "@codeit/stub-generator/parser-javascript": [
+        "libs/stub-generator/parser-javascript/src/index.ts"
+      ],
+      "@codeit/stub-generator/utils-domain": [
+        "libs/stub-generator/utils-domain/src/index.ts"
+      ],
+      "@codeit/stub-generator/utils-mocks": [
+        "libs/stub-generator/utils-mocks/src/index.ts"
+      ],
+      "@codeit/stub-generator/utils-syntax-parser": [
+        "libs/stub-generator/utils-syntax-parser/src/index.ts"
+      ]
     }
   },
-  "ts-node": {
-    "require": ["tsconfig-paths/register"]
-  }
+  "exclude": ["node_modules", "tmp"]
 }

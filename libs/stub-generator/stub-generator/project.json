@@ -1,0 +1,23 @@
+{
+  "root": "libs/stub-generator/stub-generator",
+  "sourceRoot": "libs/stub-generator/stub-generator/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/stub-generator/stub-generator/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/stub-generator/stub-generator"],
+      "options": {
+        "jestConfig": "libs/stub-generator/stub-generator/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

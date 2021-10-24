@@ -7,7 +7,7 @@ type tmux >/dev/null 2>&1 || {
 
 
 SESSION_NAME="codeit"
-COMPOSE="docker-compose -f ./docker-compose.base.yml -f ./docker-compose.dev.yml"
+COMPOSE="docker-compose -f ./config/docker/docker-compose.base.yml -f ./config/docker/docker-compose.dev.yml"
 scripts=("$COMPOSE up api")
 
 tmux has-session -t $SESSION_NAME &>/dev/null

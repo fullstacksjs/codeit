@@ -1,0 +1,64 @@
+{
+  "root": "apps/playground",
+  "sourceRoot": "apps/playground/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/playground",
+        "index": "apps/playground/src/index.html",
+        "baseHref": "/",
+        "main": "apps/playground/src/main.tsx",
+        "polyfills": "apps/playground/src/polyfills.ts",
+        "tsConfig": "apps/playground/tsconfig.app.json",
+        "assets": ["apps/playground/src/favicon.ico"],
+        "styles": [],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "buildTarget": "playground:build",
+        "hmr": true,
+        "proxyConfig": "apps/playground/proxy.conf.json"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "playground:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/playground/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/playground"],
+      "options": {
+        "jestConfig": "apps/playground/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

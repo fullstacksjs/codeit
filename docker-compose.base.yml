@@ -6,8 +6,6 @@ services:
     image: postgres:13-alpine
     ports:
       - ${POSTGRES_PORT}:${POSTGRES_PORT}
-    networks:
-      - db_network
     env_file:
       - .env
     volumes:

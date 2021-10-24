@@ -1,0 +1,23 @@
+{
+  "root": "libs/stub-generator/parser-javascript",
+  "sourceRoot": "libs/stub-generator/parser-javascript/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/stub-generator/parser-javascript/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/stub-generator/parser-javascript"],
+      "options": {
+        "jestConfig": "libs/stub-generator/parser-javascript/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

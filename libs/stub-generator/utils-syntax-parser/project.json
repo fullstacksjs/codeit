@@ -1,0 +1,23 @@
+{
+  "root": "libs/stub-generator/utils-syntax-parser",
+  "sourceRoot": "libs/stub-generator/utils-syntax-parser/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/stub-generator/utils-syntax-parser/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/stub-generator/utils-syntax-parser"],
+      "options": {
+        "jestConfig": "libs/stub-generator/utils-syntax-parser/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,0 +1,15 @@
+{
+  "root": "libs/stub-generator/utils-mocks",
+  "sourceRoot": "libs/stub-generator/utils-mocks/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/stub-generator/utils-mocks/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}
