@@ -4,7 +4,9 @@
   "version": "0.0.0",
   "description": "An interactive coding playground",
   "scripts": {
+    "test": "lerna run test",
     "dev": "./scripts/dev/dev",
+    "migrate-reset": "./scripts/dev/migrate-reset",
     "lint": "lerna run lint --stream --concurrency=1",
     "spell": "cspell ./packages/**/*.{ts,tsx}",
     "bootstrap": "./scripts/dev/bootstrap",
@@ -36,7 +38,7 @@
     "typescript": "4.4.3"
   },
   "volta": {
-    "node": "16.9.1",
+    "node": "14.18.1",
     "npm": "7.23.0"
   }
 }

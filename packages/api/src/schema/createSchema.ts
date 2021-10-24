@@ -17,4 +17,4 @@ export const createSchema = () =>
     },
   });
 
-createSchema();
+if (require.main === module) createSchema();

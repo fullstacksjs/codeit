@@ -10,3 +10,4 @@ export const Solution = t.type({
   code: tt.NonEmptyString,
   language: Language,
 });
+export type Solution = t.TypeOf<typeof Solution>;
