@@ -4,8 +4,8 @@ An interactive playground to learn programming
 
 ## CONTRIBUTING
 
-Development of Codeit happens in GitHub, and we appreciate contributions. Learn how you can help
-improving Codeit by reading the sections below.
+Development of Codeit happens in GitHub, and we appreciate contributions. Learn
+how you can help improving Codeit by reading the sections below.
 
 ### Prerequisite
 
@@ -26,15 +26,18 @@ improving Codeit by reading the sections below.
 
 ### Sending a Pull Request
 
-The Fullstacks-Dev team is monitoring for pull requests. We will review your pull request and either
-merge it, request changes to it, or close it with an explanation.
+The Fullstacks-Dev team is monitoring for pull requests. We will review your
+pull request and either merge it, request changes to it, or close it with an
+explanation.
 
 Before submitting a pull request, please make sure the following is done:
 
 - Fork the repository and create your feature branch from dev.
-- Run `npm run bootstrap` to have all dependencies and docker images needed for development.
+- Run `npm install` to have all dependencies, husky hooks and, docker images
+  needed for development.
 - If you want to seed the database you can also run `npm run migrate-reset`.
-- To start development run `npm run dev`. (PS. if you have tmux you can run `./script/dev/tmux`)
+- To start development run `npm run dev`. (PS. if you have tmux you can run
+  `./script/dev/tmux`)
 - If you’ve fixed a bug or added code that should be tested, add tests please.
 - Ensure everything is ok `npm run verify`.
 - (Optional) Run `./scripts/dev/pr` to create PR.
@@ -46,11 +49,12 @@ Before submitting a pull request, please make sure the following is done:
 
 ## Stub Generator
 
-The stub generator is the program which will write in every available language the boilerplate code
-you get when you open the editor. To do this, the generator needs input written using the syntax
-below.
+The stub generator is the program which will write in every available language
+the boilerplate code you get when you open the editor. To do this, the generator
+needs input written using the syntax below.
 
-and is open for your contribution, you can read the full spec [here](docs/stub-generator.md).
+and is open for your contribution, you can read the full spec
+[here](docs/stub-generator.md).
 
 [git]: https://git-scm.com/
 [github-cli]: https://cli.github.com/

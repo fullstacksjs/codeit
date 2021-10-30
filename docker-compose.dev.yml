@@ -4,38 +4,14 @@ services:
   api:
     build:
       context: .
-      dockerfile: config/docker/api/Dockerfile.dev
+      dockerfile: config/docker/Dockerfile.dev
+    command: ['npm', 'run', 'start:api']
     volumes:
-      - ./packages/core/src:/app/packages/core/src
-      - ./packages/api/src:/app/packages/api/src
-      - ./packages/stubGenerator:/app/packages/stubGenerator
-      - ./packages/api/prisma:/app/packages/api/prisma
-      - ./packages/api/test:/app/packages/api/test
-      - api_nm:/app/packages/api/node_modules
-      - api_root_nm:/app/node_modules
-      - api_core_nm:/app/packages/core/node_modules
+      - ./:/app:z
+      - nm:/app/node_modules:z
     tty: true
     environment:
       NODE_ENV: development
 
-  studio:
-    container_name: codeit_studio
-    build:
-      context: .
-      dockerfile: config/docker/prisma/Dockerfile.studio
-    restart: always
-    ports:
-      - 5555:5555
-    volumes:
-      - ./packages/api:/prisma
-    environment:
-      DATABASE_URI: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}?schema=${POSTGRES_SCHEMA}
-    depends_on:
-      - postgres
-    networks:
-      - db_network
-
 volumes:
-  api_nm:
-  api_root_nm:
-  api_core_nm:
+  nm:

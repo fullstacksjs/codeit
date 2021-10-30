@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 
-docker-compose -f ./config/docker/docker-compose.base.yml -f ./config/docker/docker-compose.dev.yml up "$@"
+docker-compose -f ./docker-compose.base.yml -f ./docker-compose.dev.yml up "$@"

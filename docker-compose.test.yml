@@ -3,23 +3,7 @@ version: '3.8'
 services:
   api:
     container_name: codeit_test
-    networks:
-      - db_network
-    build:
-      context: .
-      dockerfile: config/docker/api/Dockerfile.test
-    depends_on:
-      - postgres
-    tty: true
     env_file:
       - .env.test
     environment:
-      DATABASE_URI: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}?schema=${POSTGRES_SCHEMA}
       NODE_ENV: test
-  studio:
-    deploy:
-      replicas: 0
-volumes:
-  api_nm:
-  api_root_nm:
-  api_core_nm:

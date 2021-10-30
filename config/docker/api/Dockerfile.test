@@ -1,8 +1,0 @@
-FROM codeit/dev:latest
-
-COPY packages/core/package.json packages/core/tsconfig.json packages/core/.npmrc packages/core/
-COPY packages/api/package.json packages/api/tsconfig.json packages/api/jest.config.js packages/api/.npmrc packages/api/
-COPY packages/stubGenerator/package.json packages/stubGenerator/tsconfig.json packages/stubGenerator/.npmrc packages/stubGenerator/
-
-ENV WORKSPACE=packages/api
-CMD ["npm", "run", "test"]

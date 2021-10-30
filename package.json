@@ -6,13 +6,15 @@
   "license": "MIT",
   "scripts": {
     "start": "nx serve",
+    "start:api": "nx serve api",
     "build": "nx build",
     "test": "nx test",
     "dev": "./scripts/dev/dev",
-    "migrate-reset": "./scripts/dev/migrate-reset",
+    "migrate:reset": "prisma migrate reset --force",
+    "migrate:dev": "prisma migrate dev",
+    "studio": "prisma studio",
     "spell": "cspell ./packages/**/*.{ts,tsx}",
-    "bootstrap": "./scripts/dev/bootstrap",
-    "prepare": "./config/husky/prepare"
+    "prepare": "./config/husky/prepare && ./scripts/dev/build"
   },
   "repository": {
     "type": "git",

@@ -1,10 +1,18 @@
 version: '3.8'
 
 services:
+  postgres:
+    networks:
+      - db_network
+
   api:
     build:
       context: .
-      dockerfile: config/docker/api/Dockerfile.prod
+      dockerfile: config/docker/Dockerfile.api
     environment:
       NODE_ENV: production
+    networks:
+      - db_network
 
+networks:
+  db_network:

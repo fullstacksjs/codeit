@@ -1,5 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 
-docker build --tag=codeit/dev:latest -f config/docker/base/Dockerfile.dev .
-docker-compose -f ./config/docker/docker-compose.base.yml -f ./config/docker/docker-compose.dev.yml build "$@"
+docker-compose -f ./docker-compose.base.yml -f ./docker-compose.dev.yml build "$@"
