@@ -7,6 +7,7 @@
   "scripts": {
     "start": "nx serve",
     "start:api": "nx serve api",
+    "gen:nexus:api": "ts-node ./apps/api/src/schema/createSchema.ts",
     "build": "nx build",
     "test": "nx test",
     "dev": "./scripts/dev/dev",
