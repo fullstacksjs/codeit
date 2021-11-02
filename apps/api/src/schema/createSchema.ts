@@ -9,12 +9,12 @@ export const createSchema = () =>
     outputs: {
       schema: false,
       typegen: resolve(
-        __dirname,
-        '../../node_modules/@types/nexus-typegen/index.d.ts',
+        process.cwd(),
+        'node_modules/@types/nexus-typegen/index.d.ts',
       ),
     },
     contextType: {
-      module: require.resolve('./createContext.ts'),
+      module: resolve(process.cwd(), 'apps/api/src/schema/createContext.ts'),
       export: 'Context',
       alias: 'Context',
     },
