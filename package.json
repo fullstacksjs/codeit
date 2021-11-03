@@ -7,7 +7,7 @@
   "scripts": {
     "start": "nx serve",
     "start:api": "nx serve api",
-    "gen:nexus:api": "ts-node ./apps/api/src/schema/createSchema.ts",
+    "gen:nexus:api": "nx run api:gen:nexus",
     "build": "nx build",
     "test": "nx test",
     "dev": "./scripts/dev/dev",
@@ -15,7 +15,7 @@
     "migrate:dev": "prisma migrate dev",
     "studio": "prisma studio",
     "spell": "cspell ./packages/**/*.{ts,tsx}",
-    "prepare": "./config/husky/prepare && ./scripts/dev/build"
+    "prepare": "./config/husky/prepare"
   },
   "repository": {
     "type": "git",
