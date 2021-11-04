@@ -1,7 +1,13 @@
-import { PrismaClient } from '@prisma/client';
+import { PlayerRepo, PuzzleRepo } from '@codeit/core';
+
+import { PrismaPlayerRepo, PrismaPuzzleRepo } from '../repo';
 
 export interface Context {
-  prisma: PrismaClient;
+  playerRepo: PlayerRepo;
+  puzzleRepo: PuzzleRepo;
 }
 
-export const createContext = (): Context => ({ prisma: new PrismaClient() });
+export const createContext = (): Context => ({
+  playerRepo: new PrismaPlayerRepo(),
+  puzzleRepo: new PrismaPuzzleRepo(),
+});
