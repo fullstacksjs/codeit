@@ -20,4 +20,7 @@ export const createSchema = () =>
     },
   });
 
-if (require.main === module) createSchema();
+if (require.main === module) {
+  console.log('dev schema created');
+  createSchema();
+}
