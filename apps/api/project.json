@@ -3,7 +3,7 @@
   "sourceRoot": "apps/api/src",
   "projectType": "application",
   "targets": {
-    "build:nexus": {
+    "build-nexus": {
       "executor": "@nrwl/node:build",
       "outputs": ["{options.outputPath}"],
       "options": {
@@ -13,10 +13,10 @@
         "assets": []
       }
     },
-    "gen:nexus": {
+    "gen-nexus": {
       "executor": "@nrwl/node:execute",
       "options": {
-        "buildTarget": "api:x"
+        "buildTarget": "api:build-nexus"
       }
     },
     "build": {
