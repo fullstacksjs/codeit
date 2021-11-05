@@ -1,4 +1,6 @@
-import { objectType } from 'nexus';
+import { arg, nonNull, objectType } from 'nexus';
+
+import { LanguageArg } from './argTypes';
 
 export const Puzzle = objectType({
   name: 'Puzzle',
@@ -11,5 +13,15 @@ export const Puzzle = objectType({
     });
     t.nonNull.string('mode', { resolve: s => s.mode });
     t.nonNull.string('title', { resolve: s => s.title });
+    t.nonNull.list.field('testCases', {
+      type: 'TestCase',
+      resolve: s => s.testCases.filter(({ mode }) => mode === 'sample'),
+    });
+    t.nonNull.string('initialTemplate', {
+      args: { language: nonNull(arg({ type: LanguageArg })) },
+      resolve: (src, { language }) =>
+        src.initialTemplates.find(({ language: lang }) => lang === language)
+          ?.template ?? '',
+    });
   },
 });
