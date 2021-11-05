@@ -13,6 +13,21 @@ export const createSchema = () =>
         'node_modules/@types/nexus-typegen/index.d.ts',
       ),
     },
+    sourceTypes: {
+      debug: true,
+      modules: [
+        {
+          module: resolve(process.cwd(), './libs/shared/core/src/index.ts'),
+          typeMatch: type => [new RegExp(`(${type.name}.ts)`)],
+          alias: 'core',
+        },
+      ],
+      mapping: {
+        Puzzle: 'core.Puzzle',
+        Player: 'core.Player',
+      },
+    },
+
     contextType: {
       module: resolve(process.cwd(), 'apps/api/src/schema/createContext.ts'),
       export: 'Context',
