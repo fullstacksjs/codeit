@@ -1,3 +1,4 @@
+import { Languages } from '@codeit/core';
 import { generateStub } from '@codeit/stub-generator';
 import { Prisma } from '@prisma/client';
 
@@ -11,9 +12,9 @@ export const sampleClashOfCodePuzzles: Prisma.PuzzleCreateInput[] = [
     initialTemplates: {
       create: [
         {
-          language: 'JavaScript',
+          language: Languages.JavaScript,
           template: generateStub(
-            'JavaScript',
+            Languages.JavaScript,
             'read LINE:string(101)\nwrite 0',
           ),
         },
@@ -65,9 +66,9 @@ export const sampleClashOfCodePuzzles: Prisma.PuzzleCreateInput[] = [
     initialTemplates: {
       create: [
         {
-          language: 'JavaScript',
+          language: Languages.JavaScript,
           template: generateStub(
-            'JavaScript',
+            Languages.JavaScript,
             'read s:string(10)\nread n:int\nwrite answer\n',
           ),
         },
