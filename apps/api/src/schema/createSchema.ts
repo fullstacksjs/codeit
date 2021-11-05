@@ -18,7 +18,9 @@ export const createSchema = () =>
       modules: [
         {
           module: resolve(process.cwd(), './libs/shared/core/src/index.ts'),
-          typeMatch: type => [new RegExp(`(${type.name}.ts)`)],
+          typeMatch: type => [
+            new RegExp(`export \\* from .+(${type.name}\\.ts)`),
+          ],
           alias: 'core',
         },
       ],
