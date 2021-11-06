@@ -1,9 +1,7 @@
-import { ApiServer } from './ApiServer';
+import { ApiServer } from './app/ApiServer';
 import { getConfig } from './config/getConfig';
 
-const config = getConfig();
-const apiServer = ApiServer(config);
-
-apiServer.listen(config.port, () =>
-  console.log(`Listening on port ${config.port}`),
-);
+new ApiServer(getConfig())
+  .init()
+  .listen()
+  .then(port => console.log(`🚀 Server is listening on port ${port}`));

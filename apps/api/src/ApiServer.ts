@@ -1,13 +1,21 @@
-import { ApolloServer } from 'apollo-server';
-
-import type { Config } from './config/getConfig';
+import { Config } from '../config/getConfig';
+import { App } from './App';
+import { createHelixMiddleware } from './middleware/createHelixMiddleware';
 import { createSchema } from './schema';
-import { createContext } from './schema/createContext';
 
-export function ApiServer(_config: Config) {
-  const apolloServer = new ApolloServer({
-    schema: createSchema(),
-    context: createContext(),
-  });
-  return apolloServer;
+export class ApiServer {
+  app: App;
+
+  constructor(private config: Config) {
+    this.app = new App();
+  }
+
+  public init() {
+    this.app.use('/graphql', createHelixMiddleware({ schema: createSchema() }));
+    return this;
+  }
+
+  listen() {
+    return this.app.listen(this.config.port);
+  }
 }

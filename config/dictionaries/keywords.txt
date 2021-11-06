@@ -19,3 +19,4 @@ cacheable
 buildable
 cssmodule
 chainable
+GraphiQL
