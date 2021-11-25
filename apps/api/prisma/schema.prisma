@@ -29,6 +29,11 @@ enum Language {
   Fsharp
   Go
   C
+  Python
+  Ruby
+  Rust
+  Lua
+  Php
 }
 
 model InitialTemplate {
