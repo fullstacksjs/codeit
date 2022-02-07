@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-import { App } from './App';
+import { Playground } from './Playground';
 
 describe('App', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<App />);
+    const { baseElement } = render(<Playground />);
 
     expect(baseElement).toBeTruthy();
   });
