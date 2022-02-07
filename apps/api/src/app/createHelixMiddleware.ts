@@ -1,6 +1,6 @@
 import type { Request as ExpressRequest, RequestHandler } from 'express';
 import type { GraphQLSchema } from 'graphql';
-import type { Request as HelixRequest } from 'graphql-helix';
+import type { ExecutionContext, Request as HelixRequest } from 'graphql-helix';
 import {
   getGraphQLParameters,
   processRequest,
@@ -16,17 +16,21 @@ const fromExpressRequest = (req: ExpressRequest): HelixRequest => ({
   query: req.query,
 });
 
-type CreateHelixMiddleware = (args: {
+interface Args<TContext> {
   schema: GraphQLSchema;
-}) => RequestHandler;
+  contextFactory: (
+    executionContext: ExecutionContext,
+  ) => Promise<TContext> | TContext;
+}
 
-export const createHelixMiddleware: CreateHelixMiddleware =
-  ({ schema }) =>
+export const createHelixMiddleware =
+  <TContext>({ schema, contextFactory }: Args<TContext>): RequestHandler =>
   async (req, res) => {
     const request = fromExpressRequest(req);
     if (shouldRenderGraphiQL(request)) return res.send(renderGraphiQL());
     const { operationName, query, variables } = getGraphQLParameters(request);
     const result = await processRequest({
+      contextFactory,
       operationName,
       query,
       variables,
