@@ -7,10 +7,9 @@
   },
   "include": [
     "**/*.spec.ts",
+    "**/*.test.ts",
     "**/*.spec.tsx",
-    "**/*.spec.js",
-    "**/*.spec.jsx",
-    "**/*.d.ts",
-    "../parser-javascript/src/lib/javascript.spec.ts"
+    "**/*.test.tsx",
+    "**/*.d.ts"
   ]
 }
