@@ -20,3 +20,6 @@ buildable
 cssmodule
 chainable
 GraphiQL
+tailwindcss
+semibold
+svgr

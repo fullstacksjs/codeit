@@ -5,6 +5,15 @@
     "types": ["node"]
   },
   "files": [],
-  "exclude": ["**/*.spec.ts", "**/*.test.ts", "**/*.spec.tsx", "**/*.test.tsx"],
+  "exclude": [
+    "**/*.spec.ts",
+    "**/*.test.ts",
+    "**/*.spec.tsx",
+    "**/*.test.tsx",
+    "**/*.stories.ts",
+    "**/*.stories.tsx",
+    "**/*.stories.ts",
+    "**/*.stories.tsx"
+  ],
   "include": ["**/*.ts", "**/*.tsx"]
 }
