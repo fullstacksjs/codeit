@@ -1,4 +1,5 @@
-import { Id, Player, PlayerRepo } from '@codeit/core';
+import type { Id, PlayerRepo } from '@codeit/core';
+import { Player } from '@codeit/core';
 import { PrismaClient } from '@prisma/client';
 import { flow, pipe } from 'fp-ts/function';
 import * as TO from 'fp-ts/TaskOption';

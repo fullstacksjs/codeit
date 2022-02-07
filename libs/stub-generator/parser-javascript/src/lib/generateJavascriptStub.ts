@@ -1,4 +1,4 @@
-import { Syntax } from '@codeit/core';
+import type { Syntax } from '@codeit/core';
 
 import { parseLine } from './parseLine';
 

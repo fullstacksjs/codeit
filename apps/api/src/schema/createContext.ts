@@ -1,4 +1,4 @@
-import { PlayerRepo, PuzzleRepo } from '@codeit/core';
+import type { PlayerRepo, PuzzleRepo } from '@codeit/core';
 
 import { PrismaPlayerRepo, PrismaPuzzleRepo } from '../repo';
 

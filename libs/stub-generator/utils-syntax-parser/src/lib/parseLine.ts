@@ -1,4 +1,4 @@
-import { Instruction } from '@codeit/core';
+import type { Instruction } from '@codeit/core';
 import * as O from 'fp-ts/lib/Option';
 import { match } from 'ts-pattern';
 

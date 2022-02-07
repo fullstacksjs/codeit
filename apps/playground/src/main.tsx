@@ -1,11 +1,11 @@
 import { StrictMode } from 'react';
 import * as ReactDOM from 'react-dom';
 
-import { App } from './App/App';
+import { Playground } from './App/Playground';
 
 ReactDOM.render(
   <StrictMode>
-    <App />
+    <Playground />
   </StrictMode>,
   document.getElementById('root'),
 );

@@ -1,4 +1,4 @@
-import { NonEmptyArray } from 'fp-ts/NonEmptyArray';
+import type { NonEmptyArray } from 'fp-ts/NonEmptyArray';
 
 export type VarType = 'float' | 'int' | 'string' | 'word';
 export type Variable = [string, VarType];

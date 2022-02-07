@@ -1,4 +1,4 @@
-import { Write } from '@codeit/core';
+import type { Write } from '@codeit/core';
 import { isNullOrEmpty } from '@fullstacksjs/toolbox';
 import { flow, pipe } from 'fp-ts/lib/function';
 import * as O from 'fp-ts/lib/Option';

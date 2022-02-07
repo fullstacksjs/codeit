@@ -1,6 +1,6 @@
 import { Languages } from '@codeit/core';
 import { generateStub } from '@codeit/stub-generator';
-import { Prisma } from '@prisma/client';
+import type { Prisma } from '@prisma/client';
 
 export const sampleClashOfCodePuzzles: Prisma.PuzzleCreateInput[] = [
   {

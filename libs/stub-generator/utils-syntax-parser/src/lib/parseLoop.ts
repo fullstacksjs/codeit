@@ -1,4 +1,4 @@
-import { Loop } from '@codeit/core';
+import type { Loop } from '@codeit/core';
 import { pipe } from 'fp-ts/lib/function';
 import * as O from 'fp-ts/lib/Option';
 import { Do } from 'fp-ts-contrib/Do';

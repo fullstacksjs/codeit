@@ -1,7 +1,7 @@
-import * as TO from 'fp-ts/lib/TaskOption';
+import type * as TO from 'fp-ts/lib/TaskOption';
 
-import { Id } from './Id';
-import { Player } from './Player';
+import type { Id } from './Id';
+import type { Player } from './Player';
 
 export interface PlayerRepo {
   getPlayerById: (id: Id) => TO.TaskOption<Player>;

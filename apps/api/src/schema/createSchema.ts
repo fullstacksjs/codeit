@@ -37,6 +37,6 @@ export const createSchema = () =>
   });
 
 if (require.main === module) {
-  console.log('dev schema created');
+  console.log('✨ Schema created');
   createSchema();
 }

@@ -1,4 +1,4 @@
-import { Instruction, Loop } from '@codeit/core';
+import type { Instruction, Loop } from '@codeit/core';
 import { __, match } from 'ts-pattern';
 
 // eslint-disable-next-line import/no-cycle
