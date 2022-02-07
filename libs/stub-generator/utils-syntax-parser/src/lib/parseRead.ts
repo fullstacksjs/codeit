@@ -1,4 +1,4 @@
-import { Read } from '@codeit/core';
+import type { Read } from '@codeit/core';
 import { flow, pipe } from 'fp-ts/lib/function';
 import * as O from 'fp-ts/lib/Option';
 import * as NEA from 'fp-ts/NonEmptyArray';

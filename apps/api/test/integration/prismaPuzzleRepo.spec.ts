@@ -1,12 +1,12 @@
-import { Id, Title } from '@codeit/core';
+import type { Id, Title } from '@codeit/core';
+import { PrismaClient } from '@prisma/client';
 import { fail } from 'assert';
 import { pipe } from 'fp-ts/lib/function';
 import * as TO from 'fp-ts/TaskOption';
 
 import { sampleInOutPuzzles } from '../../prisma/seed/sampleInOutPuzzles';
 import { seedPuzzles } from '../../prisma/seed/seedPuzzles';
-import { PrismaPuzzleRepo } from '../../src/app/repo';
-import { PrismaClient } from '.prisma/client';
+import { PrismaPuzzleRepo } from '../../src/repo';
 
 describe('prismaPuzzleRepo', () => {
   const puzzleRepo = new PrismaPuzzleRepo();

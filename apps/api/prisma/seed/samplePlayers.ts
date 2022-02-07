@@ -1,4 +1,4 @@
-import { Prisma } from '@prisma/client';
+import type { Prisma } from '@prisma/client';
 
 export const samplePlayers: Prisma.PlayerCreateInput[] = [
   { displayName: 'Alireza', email: 'abcdefg@gmail.com', username: 's_kill' },

@@ -1,4 +1,4 @@
-import { Variable } from '@codeit/core';
+import type { Variable } from '@codeit/core';
 import {
   eliminateConstrains,
   replaceLongsWithInt,

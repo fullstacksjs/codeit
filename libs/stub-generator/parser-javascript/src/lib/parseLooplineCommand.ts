@@ -1,4 +1,4 @@
-import { Loopline } from '@codeit/core';
+import type { Loopline } from '@codeit/core';
 import { match } from 'ts-pattern';
 
 export const parseLooplineCommand = ([_, countName, [name, type]]: Loopline) =>

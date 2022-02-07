@@ -1,6 +1,6 @@
 import { ApolloServer } from 'apollo-server';
 
-import { Config } from './config/getConfig';
+import type { Config } from './config/getConfig';
 import { createSchema } from './schema';
 import { createContext } from './schema/createContext';
 

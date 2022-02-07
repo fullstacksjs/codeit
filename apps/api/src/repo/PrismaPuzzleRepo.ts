@@ -1,6 +1,8 @@
-import { Id, Puzzle, PuzzleRepo, Title } from '@codeit/core';
+import type { Id, PuzzleRepo, Title } from '@codeit/core';
+import { Puzzle } from '@codeit/core';
 import { randomInt } from '@fullstacksjs/toolbox';
-import { PrismaClient, PuzzleMode } from '@prisma/client';
+import type { PuzzleMode } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
 import { flow, pipe } from 'fp-ts/function';
 import * as TO from 'fp-ts/TaskOption';
 

@@ -1,9 +1,9 @@
-import * as TO from 'fp-ts/lib/TaskOption';
+import type * as TO from 'fp-ts/lib/TaskOption';
 
-import { Id } from './Id';
-import { Puzzle } from './Puzzle';
-import { PuzzleMode } from './PuzzleMode';
-import { Title } from './Title';
+import type { Id } from './Id';
+import type { Puzzle } from './Puzzle';
+import type { PuzzleMode } from './PuzzleMode';
+import type { Title } from './Title';
 
 export interface PuzzleRepo {
   getRandomPuzzle: () => TO.TaskOption<Puzzle>;

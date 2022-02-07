@@ -1,4 +1,5 @@
-import { Language, Languages } from '@codeit/core';
+import type { Language } from '@codeit/core';
+import { Languages } from '@codeit/core';
 import { generateJavascriptStub } from '@codeit/stub-generator/parser-javascript';
 import { parseSyntax } from '@codeit/stub-generator/utils-syntax-parser';
 import { pipe } from 'fp-ts/lib/function';

@@ -1,4 +1,5 @@
-import { nameOf, Read, typeOf, Variable } from '@codeit/core';
+import type { Read, Variable } from '@codeit/core';
+import { nameOf, typeOf } from '@codeit/core';
 import { isAllOfType } from '@codeit/stub-generator/utils-domain';
 import { throwErr, toCapitalCase } from '@fullstacksjs/toolbox';
 import * as R from 'ramda';

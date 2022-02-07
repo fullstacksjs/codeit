@@ -1,12 +1,12 @@
-import { Id } from '@codeit/core';
+import type { Id } from '@codeit/core';
 import { noop } from '@fullstacksjs/toolbox';
+import { PrismaClient } from '@prisma/client';
 import { fail } from 'assert';
 import { pipe } from 'fp-ts/lib/function';
 import * as TO from 'fp-ts/TaskOption';
 
 import { seedPlayers } from '../../prisma/seed/seedPlayers';
-import { PrismaPlayerRepo } from '../../src/app/repo';
-import { PrismaClient } from '.prisma/client';
+import { PrismaPlayerRepo } from '../../src/repo';
 
 describe('prismaPlayerRepo', () => {
   const playerRepo = new PrismaPlayerRepo();
