@@ -1,0 +1,17 @@
+{
+  "root": "libs/shared/ui-theme-provider",
+  "sourceRoot": "libs/shared/ui-theme-provider/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/shared/ui-theme-provider/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    }
+  }
+}

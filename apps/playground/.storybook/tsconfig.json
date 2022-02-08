@@ -6,11 +6,6 @@
     "outDir": ""
   },
   "files": [],
-  "exclude": [
-    "../**/*.spec.ts",
-    "../**/*.spec.js",
-    "../**/*.spec.tsx",
-    "../**/*.spec.jsx"
-  ],
-  "include": ["../src/**/*", "*.js"]
+  "exclude": ["../**/*.spec.tsx", "../**/*.spec.jsx"],
+  "include": ["../src/**/*", "*.js", "main.ts"]
 }

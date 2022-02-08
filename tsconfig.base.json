@@ -10,6 +10,9 @@
     "baseUrl": ".",
     "paths": {
       "@codeit/core": ["libs/shared/core/src/index.ts"],
+      "@codeit/shared/ui-theme-provider": [
+        "libs/shared/ui-theme-provider/src/index.ts"
+      ],
       "@codeit/stub-generator": [
         "libs/stub-generator/stub-generator/src/index.ts"
       ],

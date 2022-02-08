@@ -1,3 +1,4 @@
+import { ThemeProvider } from '@codeit/shared/ui-theme-provider';
 import { StrictMode } from 'react';
 import * as ReactDOM from 'react-dom';
 
