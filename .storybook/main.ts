@@ -4,7 +4,14 @@ import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
 const config: StorybookConfig = {
   core: { builder: 'webpack5' },
   stories: [],
-  addons: ['@storybook/addon-essentials'],
+  addons: [
+    {
+      name: '@storybook/addon-essentials',
+      options: {
+        docs: false,
+      },
+    },
+  ],
   webpackFinal(config) {
     config.resolve ??= {};
     config.resolve.plugins ??= [];

@@ -3,9 +3,11 @@
   "compilerOptions": {
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "outDir": ""
+    "outDir": "",
+    "noEmit": false,
+    "composite": true
   },
-  "files": [],
-  "exclude": ["../**/*.spec.tsx", "../**/*.spec.jsx"],
-  "include": ["../src/**/*", "*.js", "main.ts"]
+  "files": ["../../../node_modules/@nrwl/react/typings/styled-jsx.d.ts"],
+  "exclude": ["../**/*.spec.ts", "../**/*.spec.tsx"],
+  "include": ["../src/**/*"]
 }

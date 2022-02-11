@@ -4,7 +4,7 @@ import rootMain from '../../../.storybook/main';
 
 const config: StorybookConfig = {
   ...rootMain,
-  stories: ['../src/App/**/*.stories.tsx'],
+  stories: ['../stories/**/*.stories.tsx'],
 };
 
 export default config;
