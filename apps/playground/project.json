@@ -1,54 +1,37 @@
 {
   "root": "apps/playground",
-  "sourceRoot": "apps/playground/src",
+  "sourceRoot": "apps/playground",
   "projectType": "application",
   "targets": {
     "build": {
-      "executor": "@nrwl/web:webpack",
+      "executor": "@nrwl/next:build",
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/apps/playground",
-        "index": "apps/playground/src/index.html",
-        "baseHref": "/",
-        "main": "apps/playground/src/main.tsx",
-        "polyfills": "apps/playground/src/polyfills.ts",
-        "tsConfig": "apps/playground/tsconfig.app.json",
-        "assets": ["apps/playground/src/favicon.ico"],
-        "styles": [],
-        "scripts": [],
-        "webpackConfig": "@nrwl/react/plugins/webpack"
+        "root": "apps/playground",
+        "outputPath": "dist/apps/playground"
       },
       "configurations": {
-        "production": {
-          "optimization": true,
-          "outputHashing": "all",
-          "sourceMap": false,
-          "namedChunks": false,
-          "extractLicenses": true,
-          "vendorChunk": false
-        }
+        "production": {}
       }
     },
     "serve": {
-      "executor": "@nrwl/web:dev-server",
+      "executor": "@nrwl/next:server",
       "options": {
         "buildTarget": "playground:build",
-        "hmr": true,
-        "proxyConfig": "apps/playground/proxy.conf.json"
+        "dev": true
       },
       "configurations": {
         "production": {
           "buildTarget": "playground:build:production",
-          "hmr": false
+          "dev": false
         }
       }
     },
-    "lint": {
-      "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+    "export": {
+      "executor": "@nrwl/next:export",
       "options": {
-        "lintFilePatterns": ["apps/playground/**/*.{ts,tsx,js,jsx}"]
+        "buildTarget": "playground:build:production"
       }
     },
     "test": {
@@ -57,6 +40,13 @@
       "options": {
         "jestConfig": "apps/playground/jest.config.js",
         "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/playground/**/*.{ts,tsx,js,jsx}"]
       }
     },
     "storybook": {
@@ -79,7 +69,7 @@
       "outputs": ["{options.outputPath}"],
       "options": {
         "uiFramework": "@storybook/react",
-        "outputPath": "dist/storybook/playground",
+        "outputPath": "dist/storybook/playground-next",
         "config": {
           "configFolder": "apps/playground/.storybook"
         }

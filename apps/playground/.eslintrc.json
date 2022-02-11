@@ -1,4 +1,15 @@
 {
-  "extends": ["plugin:@nrwl/nx/react", "../../.eslintrc.json"],
-  "ignorePatterns": ["!**/*"]
+  "extends": ["../../.eslintrc.json", "plugin:@next/next/recommended"],
+  "ignorePatterns": ["!**/*"],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "rules": {
+        "@next/next/no-html-link-for-pages": [
+          "error",
+          "apps/playground-next/pages"
+        ]
+      }
+    }
+  ]
 }

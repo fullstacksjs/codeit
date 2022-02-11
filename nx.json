@@ -49,6 +49,12 @@
         "style": "none",
         "linter": "eslint"
       }
+    },
+    "@nrwl/next": {
+      "application": {
+        "style": "none",
+        "linter": "eslint"
+      }
     }
   },
   "defaultProject": "playground"

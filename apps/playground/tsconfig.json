@@ -1,11 +1,13 @@
 {
   "extends": "../../tsconfig.react.json",
-  "files": [],
-  "include": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.spec.json" },
-    { "path": "./.storybook/tsconfig.json" },
-    { "path": "./.storybook/tsconfig.json" }
-  ]
+  "include": ["**/*.ts", "**/*.tsx", "next-env.d.ts"],
+  "exclude": ["node_modules", "**/*.stories.ts", "**/*.stories.tsx"],
+  "compilerOptions": {
+    "allowJs": true,
+    "noEmit": true,
+    "incremental": true,
+    "isolatedModules": true,
+    "jsx": "preserve"
+  },
+  "references": [{ "path": "./.storybook/tsconfig.json" }]
 }

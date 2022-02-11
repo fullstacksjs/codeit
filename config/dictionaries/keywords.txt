@@ -23,3 +23,5 @@ GraphiQL
 tailwindcss
 semibold
 svgr
+mantine
+unoptimized

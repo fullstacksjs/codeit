@@ -1,11 +1,10 @@
 import { render } from '@testing-library/react';
 
-import { Playground } from './Playground';
+import Playground from '../pages/playground';
 
-describe('App', () => {
+describe('Index', () => {
   it('should render successfully', () => {
     const { baseElement } = render(<Playground />);
-
     expect(baseElement).toBeTruthy();
   });
 });
