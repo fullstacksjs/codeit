@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "$id": "@fullstacksjs/react-library",
+  "title": "Create a Fullstacks React Library",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Library name",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What name would you like to use for the library?",
+      "pattern": "^[a-zA-Z].*$"
+    },
+    "directory": {
+      "type": "string",
+      "description": "A directory where the lib is placed.",
+      "alias": "dir"
+    },
+    "tags": {
+      "type": "string",
+      "description": "Add tags to the library (used for linting).",
+      "alias": "t"
+    },
+    "publishable": {
+      "type": "boolean",
+      "description": "Create a publishable library."
+    },
+    "buildable": {
+      "type": "boolean",
+      "default": false,
+      "description": "Generate a buildable library."
+    },
+    "importPath": {
+      "type": "string",
+      "description": "The library name used to import it, like @org/my-awesome-lib"
+    },
+    "compiler": {
+      "type": "string",
+      "enum": ["babel", "swc"],
+      "default": "babel",
+      "description": "Which compiler to use."
+    }
+  },
+  "required": ["name"]
+}

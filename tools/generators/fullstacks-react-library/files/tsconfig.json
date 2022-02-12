@@ -1,0 +1,8 @@
+{
+  "extends": "<%= offsetFromRoot %>tsconfig.react.json",
+  "files": [],
+  "include": [],
+  "references": [
+    { "path": "./tsconfig.lib.json" }
+  ]
+}
