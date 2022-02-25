@@ -7,11 +7,12 @@ services:
       dockerfile: config/docker/Dockerfile.dev
     command: ['npm', 'run', 'start:api']
     volumes:
-      - ./:/app:z
-      - nm:/app/node_modules:z
+      - ./:/app
+      - nm:/app/node_modules
     tty: true
     environment:
       NODE_ENV: development
+      DATABASE_URI: ${DOCKER_DATABSE_URI}
 
 volumes:
   nm:

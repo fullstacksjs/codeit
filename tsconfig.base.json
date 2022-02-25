@@ -3,7 +3,7 @@
   "compilerOptions": {
     "outDir": "dist",
     "rootDir": ".",
-    "declaration": false,
+    "declaration": true,
     "importHelpers": true,
     "target": "ES2015",
     "lib": ["ES2020", "DOM", "ES2020.Intl"],
@@ -30,5 +30,5 @@
       ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": ["node_modules"]
 }
