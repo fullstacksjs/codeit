@@ -28,6 +28,12 @@
         }
       }
     },
+    "serveWithApi": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": ["nx run api:serve", "nx run playground:serve"]
+      }
+    },
     "export": {
       "executor": "@nrwl/next:export",
       "options": {

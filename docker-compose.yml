@@ -11,14 +11,5 @@ services:
     volumes:
       - postgres:/var/lib/postgresql/data
 
-  api:
-    container_name: codeit_api
-    depends_on:
-      - postgres
-    ports:
-      - ${API_PORT}:${API_PORT}
-    env_file:
-      - .env
-
 volumes:
   postgres:

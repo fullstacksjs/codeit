@@ -93,7 +93,6 @@ dependencies:
   '@prisma/client': 3.9.2_prisma@3.9.2
   apollo-server: 3.4.0_graphql@15.6.1
   core-js: 3.21.1
-  dotenv-cli: 5.0.0
   express: 4.17.3
   fp-ts: 2.11.5
   fp-ts-contrib: 0.1.26_fp-ts@2.11.5
@@ -147,6 +146,7 @@ devDependencies:
   babel-loader: 8.1.0_5092297764b3e141236432f855627904
   cspell: 5.18.4
   cypress: 9.4.1
+  dotenv-cli: 5.0.0
   eslint: 8.8.0
   eslint-config-next: 12.0.7_ec42a7e5d40bbfc6d99363387bca4641
   eslint-plugin-cypress: 2.10.3_eslint@8.8.0
@@ -9911,7 +9911,7 @@ packages:
       dotenv: 16.0.0
       dotenv-expand: 8.0.1
       minimist: 1.2.5
-    dev: false
+    dev: true
 
   /dotenv-expand/5.1.0:
     resolution: {integrity: sha512-YXQl1DSa4/PQyRfgrv6aoNjhasp/p4qs9FjJ4q4cQk+8m4r6k4ZSiEyytKG8f8W9gi8WsQtIObNmKd+tMzNTmA==}
@@ -9920,7 +9920,7 @@ packages:
   /dotenv-expand/8.0.1:
     resolution: {integrity: sha512-j/Ih7bIERDR5PzI89Zu8ayd3tXZ6E3dbY0ljQ9Db0K87qBO8zdLsi2dIvDHMWtjC3Yxb8XixOTHAtia0fDHRpg==}
     engines: {node: '>=12'}
-    dev: false
+    dev: true
 
   /dotenv/10.0.0:
     resolution: {integrity: sha512-rlBi9d8jpv9Sf1klPjNfFAuWDjKLwTIJJ/VxtoTwIR6hnZxcEOQCZg2oIL3MWBYw5GpUDKOEnND7LXTbIpQ03Q==}
@@ -9929,7 +9929,7 @@ packages:
   /dotenv/16.0.0:
     resolution: {integrity: sha512-qD9WU0MPM4SWLPJy/r2Be+2WgQj8plChsyrCNQzW/0WjvcJQiKQJ9mH3ZgB3fxbUUxgc/11ZJ0Fi5KiimWGz2Q==}
     engines: {node: '>=12'}
-    dev: false
+    dev: true
 
   /dotenv/8.6.0:
     resolution: {integrity: sha512-IrPdXQsk2BbzvCBGBOTmmSH5SodmqZNt4ERAZDmW4CT+tL8VtvinqywuANaFu4bOMWki16nqf0e4oC0QIaDr/g==}
