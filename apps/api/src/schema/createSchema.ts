@@ -34,6 +34,7 @@ export const createSchema = () =>
       export: 'Context',
       alias: 'Context',
     },
+    shouldExitAfterGenerateArtifacts: require.main === module,
   });
 
 if (require.main === module) {
