@@ -8,7 +8,10 @@ extensions:
       url: 'http://localhost:4000/graphql'
   codegen:
     generates:
-      libs/shared/data-access/src/lib/types.ts:
+      libs/shared/data-access/src/lib/api.ts:
         plugins:
           - typescript
           - typescript-resolvers
+    hooks:
+      afterOneFileWrite:
+        - eslint --fix

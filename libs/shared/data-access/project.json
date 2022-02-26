@@ -1,0 +1,22 @@
+{
+  "root": "libs/shared/data-access",
+  "sourceRoot": "libs/shared/data-access/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/shared/data-access/**/*.ts"]
+      }
+    },
+    "generate": {
+      "builder": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [{ "command": "npx graphql-codegen" }],
+        "outputPath": "libs/shared/data-access/types/"
+      }
+    }
+  },
+  "tags": []
+}

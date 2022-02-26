@@ -30,8 +30,6 @@
   "dependencies": {
     "@emotion/react": "11.7.1",
     "@fullstacksjs/toolbox": "2.11.0",
-    "@graphql-codegen/cli": "2.6.2",
-    "@graphql-codegen/typescript-operations": "2.3.2",
     "@graphql-eslint/eslint-plugin": "3.8.0",
     "@mantine/core": "3.6.11",
     "@mantine/hooks": "3.6.11",
@@ -63,6 +61,8 @@
     "@babel/preset-typescript": "7.16.7",
     "@fullstacksjs/eslint-config": "8.1.1",
     "@fullstacksjs/tsconfig": "0.6.0",
+    "@graphql-codegen/cli": "2.6.2",
+    "@graphql-codegen/typescript-resolvers": "2.5.2",
     "@nrwl/cli": "13.8.3",
     "@nrwl/cypress": "13.8.3",
     "@nrwl/devkit": "13.8.3",

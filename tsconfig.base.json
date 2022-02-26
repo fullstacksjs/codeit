@@ -13,6 +13,7 @@
       "@codeit/shared/ui-theme-provider": [
         "libs/shared/ui-theme-provider/src/index.ts"
       ],
+      "@codeit/shared/data-access": ["libs/shared/data-access/src/index.ts"],
       "@codeit/stub-generator": [
         "libs/stub-generator/stub-generator/src/index.ts"
       ],

@@ -1,0 +1,4 @@
+fragment PuzzleFields on Puzzle {
+  id
+  title
+}
