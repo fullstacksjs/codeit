@@ -27,3 +27,5 @@ mantine
 unoptimized
 Serializers
 devkit
+pnpm
+preinstall
