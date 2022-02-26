@@ -1,6 +1,7 @@
+import { apiPort } from '@codeit/environment';
+
 import { createApp } from './app/createApp';
-import { getConfig } from './config/getConfig';
 
 createApp()
-  .listen(getConfig().port)
+  .listen(apiPort)
   .then(port => console.log(`🚀 Server is listening on port ${port}`));
