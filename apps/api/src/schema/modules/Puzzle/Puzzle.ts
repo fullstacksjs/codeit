@@ -5,7 +5,7 @@ import { LanguageArg } from '../types';
 export const Puzzle = objectType({
   name: 'Puzzle',
   definition(t) {
-    t.nonNull.string('id', { resolve: s => s.id });
+    t.nonNull.id('id', { resolve: s => s.id });
     t.nonNull.string('constraint', { resolve: s => s.constraint });
     t.nonNull.string('inputDescription', { resolve: s => s.inputDescription });
     t.nonNull.string('outputDescription', {

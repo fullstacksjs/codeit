@@ -7,7 +7,7 @@ export const createSchema = () =>
   makeSchema({
     types,
     outputs: {
-      schema: false,
+      schema: resolve(process.cwd(), 'apps/api/src/schema/schema.graphql'),
       typegen: resolve(
         process.cwd(),
         'node_modules/@types/nexus-typegen/index.d.ts',

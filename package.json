@@ -30,6 +30,8 @@
   "dependencies": {
     "@emotion/react": "11.7.1",
     "@fullstacksjs/toolbox": "2.11.0",
+    "@graphql-codegen/cli": "2.6.2",
+    "@graphql-codegen/typescript-operations": "2.3.2",
     "@graphql-eslint/eslint-plugin": "3.8.0",
     "@mantine/core": "3.6.11",
     "@mantine/hooks": "3.6.11",
