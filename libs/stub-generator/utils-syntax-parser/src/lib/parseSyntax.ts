@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-use-before-define */
 import type { Syntax } from '@codeit/core';
 import { isNullOrEmpty } from '@fullstacksjs/toolbox';
 import { compact } from 'fp-ts/lib/Array';

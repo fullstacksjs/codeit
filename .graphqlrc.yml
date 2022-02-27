@@ -1,0 +1,20 @@
+schema: 'apps/api/src/schema/schema.graphql'
+documents: 'libs/shared/data-access/src/lib/**/*.gql'
+extensions:
+  languageService:
+    cacheSchemaFileForLookup: true
+  endpoints:
+    default:
+      url: 'http://localhost:4000/graphql'
+  codegen:
+    generates:
+      libs/shared/data-access/src/lib/api.ts:
+        config:
+          withHooks: true
+        plugins:
+          - typescript
+          - typescript-operations
+          - typescript-urql
+    hooks:
+      afterOneFileWrite:
+        - eslint --fix

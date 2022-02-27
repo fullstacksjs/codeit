@@ -1,9 +1,0 @@
-version: '3.8'
-
-services:
-  api:
-    container_name: codeit_test
-    env_file:
-      - .env.test
-    environment:
-      NODE_ENV: test

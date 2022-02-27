@@ -3,13 +3,15 @@
   "compilerOptions": {
     "outDir": "dist",
     "rootDir": ".",
-    "declaration": false,
+    "declaration": true,
     "importHelpers": true,
     "target": "ES2015",
     "lib": ["ES2020", "DOM", "ES2020.Intl"],
     "baseUrl": ".",
     "paths": {
       "@codeit/core": ["libs/shared/core/src/index.ts"],
+      "@codeit/environment": ["libs/shared/environment/src/index.ts"],
+      "@codeit/shared/data-access": ["libs/shared/data-access/src/index.ts"],
       "@codeit/shared/ui-theme-provider": [
         "libs/shared/ui-theme-provider/src/index.ts"
       ],
@@ -30,5 +32,5 @@
       ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": ["node_modules"]
 }

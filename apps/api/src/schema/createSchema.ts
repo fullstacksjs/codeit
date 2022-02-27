@@ -7,7 +7,7 @@ export const createSchema = () =>
   makeSchema({
     types,
     outputs: {
-      schema: false,
+      schema: resolve(process.cwd(), 'apps/api/src/schema/schema.graphql'),
       typegen: resolve(
         process.cwd(),
         'node_modules/@types/nexus-typegen/index.d.ts',
@@ -34,6 +34,8 @@ export const createSchema = () =>
       export: 'Context',
       alias: 'Context',
     },
+    prettierConfig: resolve(process.cwd(), '.prettierrc'),
+    shouldExitAfterGenerateArtifacts: require.main === module,
   });
 
 if (require.main === module) {

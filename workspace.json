@@ -5,6 +5,8 @@
     "playground": "apps/playground",
     "playground-e2e": "apps/playground-e2e",
     "shared-core": "libs/shared/core",
+    "shared-data-access": "libs/shared/data-access",
+    "shared-environment": "libs/shared/environment",
     "shared-ui-theme-provider": "libs/shared/ui-theme-provider",
     "stub-generator-parser-javascript": "libs/stub-generator/parser-javascript",
     "stub-generator-stub-generator": "libs/stub-generator/stub-generator",

@@ -1,5 +1,0 @@
-#!/bin/bash
-set -e
-
-./scripts/dev/down
-./scripts/dev/up -d

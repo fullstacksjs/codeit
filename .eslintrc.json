@@ -1,6 +1,6 @@
 {
   "root": true,
-  "extends": ["@fullstacksjs"],
+  "extends": ["@fullstacksjs", "@fullstacksjs/eslint-config/graphql"],
   "ignorePatterns": ["**/*"],
   "plugins": ["@nrwl/nx"],
   "settings": {
@@ -14,6 +14,7 @@
     {
       "files": ["*.ts", "*.tsx"],
       "rules": {
+        "@typescript-eslint/no-non-null-assertion": "off",
         "@nrwl/nx/enforce-module-boundaries": [
           "error",
           {
@@ -25,11 +26,6 @@
           }
         ]
       }
-    },
-    {
-      "files": ["*.ts", "*.tsx"],
-      "extends": ["plugin:@nrwl/nx/typescript"],
-      "rules": {}
     }
   ]
 }
