@@ -1,3 +1,3 @@
-# shared-environment
+# Environment
 
-This library was generated with [Nx](https://nx.dev).
+This module is responsible for gathering and parsing all environment variables.

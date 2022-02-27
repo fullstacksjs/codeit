@@ -1,4 +1,5 @@
-import type { GraphQLResolveInfo } from 'graphql';
+import gql from 'graphql-tag';
+import * as Urql from 'urql';
 
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
@@ -11,9 +12,7 @@ export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
   [SubKey in K]: Maybe<T[SubKey]>;
 };
-export type RequireFields<T, K extends keyof T> = Omit<T, K> & {
-  [P in K]-?: NonNullable<T[P]>;
-};
+export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 /** All built-in and custom scalars, mapped to their actual values */
 export interface Scalars {
   ID: string;
@@ -102,227 +101,39 @@ export interface TestCase {
   title: Scalars['String'];
 }
 
-export type ResolverTypeWrapper<T> = Promise<T> | T;
-
-export interface ResolverWithResolve<TResult, TParent, TContext, TArgs> {
-  resolve: ResolverFn<TResult, TParent, TContext, TArgs>;
-}
-export type Resolver<TResult, TParent = {}, TContext = {}, TArgs = {}> =
-  | ResolverFn<TResult, TParent, TContext, TArgs>
-  | ResolverWithResolve<TResult, TParent, TContext, TArgs>;
-
-export type ResolverFn<TResult, TParent, TContext, TArgs> = (
-  parent: TParent,
-  args: TArgs,
-  context: TContext,
-  info: GraphQLResolveInfo,
-) => Promise<TResult> | TResult;
-
-export type SubscriptionSubscribeFn<TResult, TParent, TContext, TArgs> = (
-  parent: TParent,
-  args: TArgs,
-  context: TContext,
-  info: GraphQLResolveInfo,
-) => AsyncIterable<TResult> | Promise<AsyncIterable<TResult>>;
-
-export type SubscriptionResolveFn<TResult, TParent, TContext, TArgs> = (
-  parent: TParent,
-  args: TArgs,
-  context: TContext,
-  info: GraphQLResolveInfo,
-) => Promise<TResult> | TResult;
-
-export interface SubscriptionSubscriberObject<
-  TResult,
-  TKey extends string,
-  TParent,
-  TContext,
-  TArgs,
-> {
-  subscribe: SubscriptionSubscribeFn<
-    { [key in TKey]: TResult },
-    TParent,
-    TContext,
-    TArgs
-  >;
-  resolve?: SubscriptionResolveFn<
-    TResult,
-    { [key in TKey]: TResult },
-    TContext,
-    TArgs
-  >;
+export interface PuzzleFieldsFragment {
+  __typename?: 'Puzzle';
+  id: string;
+  title: string;
 }
 
-export interface SubscriptionResolverObject<TResult, TParent, TContext, TArgs> {
-  subscribe: SubscriptionSubscribeFn<any, TParent, TContext, TArgs>;
-  resolve: SubscriptionResolveFn<TResult, any, TContext, TArgs>;
+export type GetRandomPuzzleQueryVariables = Exact<{ [key: string]: never }>;
+
+export interface GetRandomPuzzleQuery {
+  __typename?: 'Query';
+  getRandomPuzzle?: { __typename?: 'Puzzle'; id: string; title: string } | null;
 }
 
-export type SubscriptionObject<
-  TResult,
-  TKey extends string,
-  TParent,
-  TContext,
-  TArgs,
-> =
-  | SubscriptionResolverObject<TResult, TParent, TContext, TArgs>
-  | SubscriptionSubscriberObject<TResult, TKey, TParent, TContext, TArgs>;
+export const PuzzleFieldsFragmentDoc = gql`
+  fragment PuzzleFields on Puzzle {
+    id
+    title
+  }
+`;
+export const GetRandomPuzzleDocument = gql`
+  query getRandomPuzzle {
+    getRandomPuzzle {
+      ...PuzzleFields
+    }
+  }
+  ${PuzzleFieldsFragmentDoc}
+`;
 
-export type SubscriptionResolver<
-  TResult,
-  TKey extends string,
-  TParent = {},
-  TContext = {},
-  TArgs = {},
-> =
-  | SubscriptionObject<TResult, TKey, TParent, TContext, TArgs>
-  | ((
-      ...args: any[]
-    ) => SubscriptionObject<TResult, TKey, TParent, TContext, TArgs>);
-
-export type TypeResolveFn<TTypes, TParent = {}, TContext = {}> = (
-  parent: TParent,
-  context: TContext,
-  info: GraphQLResolveInfo,
-) => Maybe<TTypes> | Promise<Maybe<TTypes>>;
-
-export type IsTypeOfResolverFn<T = {}, TContext = {}> = (
-  obj: T,
-  context: TContext,
-  info: GraphQLResolveInfo,
-) => Promise<boolean> | boolean;
-
-export type NextResolverFn<T> = () => Promise<T>;
-
-export type DirectiveResolverFn<
-  TResult = {},
-  TParent = {},
-  TContext = {},
-  TArgs = {},
-> = (
-  next: NextResolverFn<TResult>,
-  parent: TParent,
-  args: TArgs,
-  context: TContext,
-  info: GraphQLResolveInfo,
-) => Promise<TResult> | TResult;
-
-/** Mapping between all available schema types and the resolvers types */
-export interface ResolversTypes {
-  Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
-  ID: ResolverTypeWrapper<Scalars['ID']>;
-  Language: Language;
-  Player: ResolverTypeWrapper<Player>;
-  Puzzle: ResolverTypeWrapper<Puzzle>;
-  PuzzleMode: PuzzleMode;
-  Query: ResolverTypeWrapper<{}>;
-  String: ResolverTypeWrapper<Scalars['String']>;
-  TestCase: ResolverTypeWrapper<TestCase>;
-}
-
-/** Mapping between all available schema types and the resolvers parents */
-export interface ResolversParentTypes {
-  Boolean: Scalars['Boolean'];
-  ID: Scalars['ID'];
-  Player: Player;
-  Puzzle: Puzzle;
-  Query: {};
-  String: Scalars['String'];
-  TestCase: TestCase;
-}
-
-export interface PlayerResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['Player'] = ResolversParentTypes['Player'],
-> {
-  displayName?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  email?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
-  username?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-}
-
-export interface PuzzleResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['Puzzle'] = ResolversParentTypes['Puzzle'],
-> {
-  constraint?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
-  initialTemplate?: Resolver<
-    ResolversTypes['String'],
-    ParentType,
-    ContextType,
-    RequireFields<PuzzleInitialTemplateArgs, 'language'>
-  >;
-  inputDescription?: Resolver<
-    ResolversTypes['String'],
-    ParentType,
-    ContextType
-  >;
-  mode?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  outputDescription?: Resolver<
-    ResolversTypes['String'],
-    ParentType,
-    ContextType
-  >;
-  testCases?: Resolver<
-    Maybe<ResolversTypes['TestCase']>[],
-    ParentType,
-    ContextType
-  >;
-  title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-}
-
-export interface QueryResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query'],
-> {
-  getPlayerById?: Resolver<
-    Maybe<ResolversTypes['Player']>,
-    ParentType,
-    ContextType,
-    RequireFields<QueryGetPlayerByIdArgs, 'id'>
-  >;
-  getPuzzleById?: Resolver<
-    Maybe<ResolversTypes['Puzzle']>,
-    ParentType,
-    ContextType,
-    RequireFields<QueryGetPuzzleByIdArgs, 'id'>
-  >;
-  getPuzzleByTitle?: Resolver<
-    Maybe<ResolversTypes['Puzzle']>,
-    ParentType,
-    ContextType,
-    RequireFields<QueryGetPuzzleByTitleArgs, 'title'>
-  >;
-  getRandomPuzzle?: Resolver<
-    Maybe<ResolversTypes['Puzzle']>,
-    ParentType,
-    ContextType
-  >;
-  getRandomPuzzleByMode?: Resolver<
-    Maybe<ResolversTypes['Puzzle']>,
-    ParentType,
-    ContextType,
-    RequireFields<QueryGetRandomPuzzleByModeArgs, 'mode'>
-  >;
-}
-
-export interface TestCaseResolvers<
-  ContextType = any,
-  ParentType extends ResolversParentTypes['TestCase'] = ResolversParentTypes['TestCase'],
-> {
-  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
-  input?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  mode?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-}
-
-export interface Resolvers<ContextType = any> {
-  Player?: PlayerResolvers<ContextType>;
-  Puzzle?: PuzzleResolvers<ContextType>;
-  Query?: QueryResolvers<ContextType>;
-  TestCase?: TestCaseResolvers<ContextType>;
+export function useGetRandomPuzzleQuery(
+  options?: Omit<Urql.UseQueryArgs<GetRandomPuzzleQueryVariables>, 'query'>,
+) {
+  return Urql.useQuery<GetRandomPuzzleQuery>({
+    query: GetRandomPuzzleDocument,
+    ...options,
+  });
 }

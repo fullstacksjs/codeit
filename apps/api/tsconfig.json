@@ -1,6 +1,9 @@
 {
   "extends": "../../tsconfig.base.json",
-  "files": ["../../node_modules/@types/nexus-typegen/index.d.ts"],
+  "files": [
+    "../../node_modules/@types/nexus-typegen/index.d.ts",
+    "../../@types/global.d.ts"
+  ],
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.spec.json" }

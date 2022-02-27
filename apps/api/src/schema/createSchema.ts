@@ -34,6 +34,7 @@ export const createSchema = () =>
       export: 'Context',
       alias: 'Context',
     },
+    prettierConfig: resolve(process.cwd(), '.prettierrc'),
     shouldExitAfterGenerateArtifacts: require.main === module,
   });
 

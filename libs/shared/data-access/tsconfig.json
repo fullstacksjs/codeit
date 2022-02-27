@@ -1,6 +1,6 @@
 {
   "extends": "../../../tsconfig.base.json",
-  "files": [],
+  "files": ["../../../@types/global.d.ts"],
   "include": [],
   "references": [{ "path": "./tsconfig.lib.json" }]
 }

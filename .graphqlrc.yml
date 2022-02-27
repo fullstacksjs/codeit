@@ -9,9 +9,12 @@ extensions:
   codegen:
     generates:
       libs/shared/data-access/src/lib/api.ts:
+        config:
+          withHooks: true
         plugins:
           - typescript
-          - typescript-resolvers
+          - typescript-operations
+          - typescript-urql
     hooks:
       afterOneFileWrite:
         - eslint --fix

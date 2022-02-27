@@ -8,6 +8,7 @@ export const Puzzle = objectType({
     t.nonNull.id('id', { resolve: s => s.id });
     t.nonNull.string('constraint', { resolve: s => s.constraint });
     t.nonNull.string('inputDescription', { resolve: s => s.inputDescription });
+    t.nonNull.string('statement', { resolve: s => s.statement });
     t.nonNull.string('outputDescription', {
       resolve: s => s.outputDescription,
     });

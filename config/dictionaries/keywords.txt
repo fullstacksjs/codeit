@@ -30,3 +30,4 @@ devkit
 pnpm
 preinstall
 urql
+dedup
